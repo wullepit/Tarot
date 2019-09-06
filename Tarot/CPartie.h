@@ -6,7 +6,10 @@ class CPartie
 {
 private:
 	CJoueur *les_joueurs[4];//Agrégation
-	CDonne **la_donne;//Composition
+	CDonne **les_donnes;//Composition
+	int bouts;
+	int point;
+	contrat typ_ctr;
 public:
 	CPartie(CJoueur *joueurs[]);
 	~CPartie();
