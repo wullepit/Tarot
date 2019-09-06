@@ -14,5 +14,10 @@ CDonne::CDonne(int nbpts, int bts, int pts, camp cmp_pgn, camp petit, contrat ty
 
 CDonne::~CDonne()
 {
-
+	delete le_donneur;
+	delete le_preneur;
+	for (int i = 0; i <= 2; i++)
+	{
+		delete les_defenseurs[i];
+	}
 }

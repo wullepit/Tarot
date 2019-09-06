@@ -15,18 +15,3 @@ public:
 	int lireScore();
 	int majScore();
 };
-
-string CJoueur::lireNom()
-{
-	//A coder
-}
-
-int CJoueur::lireScore()
-{
-	//A coder
-}
-
-int CJoueur::majScore()
-{
-	//A coder
-}

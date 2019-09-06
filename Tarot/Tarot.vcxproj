@@ -149,6 +149,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CDonne.cpp" />
+    <ClCompile Include="CIHM.cpp" />
+    <ClCompile Include="CJoueur.cpp" />
+    <ClCompile Include="CPartie.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
