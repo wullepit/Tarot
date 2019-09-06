@@ -11,6 +11,7 @@ private:
 	string nom;
 	int score;
 public:
+	CJoueur::CJoueur(string nom, int score);
 	string lireNom();
 	int lireScore();
 	int majScore();

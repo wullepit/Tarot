@@ -1,5 +1,10 @@
 #include "CJoueur.h"
 
+CJoueur::CJoueur(string nom, int score)
+{
+	string n = nom;
+	int s = score;
+}
 string CJoueur::lireNom()
 {
 	//A coder
