@@ -1,9 +1,5 @@
 #include "CDonne.h"
 
-CDonne::CDonne()
-{
-}
-
 CDonne::CDonne(int nbpts, int bts, int pts, camp cmp_pgn, camp petit, contrat type, chelem typ_chlm, poignee typ_pgn, CJoueur *donneur, CJoueur *preneur, CJoueur *defenseurs[3])
 {
 	nb_points = nbpts;
