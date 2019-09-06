@@ -1,5 +1,6 @@
 #pragma once
-
+#include "CJoueur.h"
+#include "CPartie.h"
 class CIHM
 {
 private:
