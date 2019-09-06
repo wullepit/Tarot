@@ -1,10 +1,13 @@
 #pragma once
+#include "CPartie.h"
+#include "CJoueur.h"
 
 class CIHM
 {
 private:
-	CPartie lapartie;//Agrégation
-	CJoueur lesjoueurs[4];//Agrégation
+	//Composition
+	CPartie lapartie;
+	CJoueur lesjoueurs[4];
 public:
 
 };
