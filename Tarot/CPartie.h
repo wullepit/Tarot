@@ -8,6 +8,6 @@ private:
 	CJoueur *les_joueurs[4];//Agrégation
 	CDonne la_donne;//Composition
 public:
-	CPartie();
+	CPartie(CJoueur *joueurs[]);
 	~CPartie();
 };
