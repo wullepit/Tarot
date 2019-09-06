@@ -28,3 +28,4 @@ CDonne::~CDonne()
 		delete les_defenseurs[i];
 	}
 }
+

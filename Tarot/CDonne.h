@@ -4,7 +4,7 @@
 //Déclaration types énumérés
 enum contrat { passe, prise, garde, garde_sans, garde_contre };
 enum camp { preneur, personne, defenseur };
-enum poignee { sans, simple, doublee, triplee, autre };
+enum poignee { non, simple, doublee, triplee, autre };
 enum chelem { sans, reussi, perdu, sans_annonce };
 
 class CDonne
@@ -23,7 +23,6 @@ private:
 	CJoueur *le_preneur;
 	CJoueur *les_defenseurs[3];
 public:
-	CDonne();//Constructeur par défaut pour la composition
 	CDonne(int nbpts, int bts, int pts, camp cmp_pgn, camp petit, contrat type, chelem typ_chlm, poignee typ_pgn, CJoueur *donneur, CJoueur *preneur, CJoueur *defenseurs[3]);
 	~CDonne();
 };
