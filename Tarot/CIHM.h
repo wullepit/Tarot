@@ -9,5 +9,6 @@ private:
 	CPartie lapartie;
 	CJoueur lesjoueurs[4];
 public:
-
+	void set_partie(CPartie &une_partie);
+	void set_joueurs(CJoueur &joueurs);
 };
