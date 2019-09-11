@@ -33,7 +33,7 @@ CDonne::~CDonne()
 	}
 }
 
-int CDonne::compter_points(int ptf, int bouts, int pts, contrat ctr, chelem chlm, poignee pgn, camp petit_bout)
+/*int CDonne::compter_points(int ptf, int bouts, int pts, contrat ctr, chelem chlm, poignee pgn, camp petit_bout)
 {
 	int objectif;
 	int bonus;
@@ -89,4 +89,38 @@ int CDonne::compter_points(int ptf, int bouts, int pts, contrat ctr, chelem chlm
 		ptf = -ptf;
 	}
 	ptf = (ptf + 25 + bonus_pgn + bonus_chlm) * bonus;
+}
+*/
+int CDonne::compter_points(int ptf, int bouts, int pts, contrat ctr)
+{
+	int bonus_ctr;
+	int objectif;
+	switch (ctr)
+	{
+	case prise:
+		bonus_ctr = 1;
+	case garde:
+		bonus_ctr = 2;
+	case garde_sans:
+		bonus_ctr = 4;
+	case garde_contre:
+		bonus_ctr = 6;
+	}
+	switch (bouts)
+	{
+	case'0':
+		objectif = 56;
+	case'1':
+		objectif = 51;
+	case'2':
+		objectif = 41;
+	case'3':
+		objectif = 36;
+	}
+	ptf = (pts - objectif);
+	if (ptf < 0)
+	{
+		ptf = -ptf;
+	}
+	ptf = (ptf + 25)*bonus_ctr;
 }
