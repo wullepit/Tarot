@@ -152,6 +152,7 @@
     <ClCompile Include="CIHM.cpp" />
     <ClCompile Include="CJoueur.cpp" />
     <ClCompile Include="CPartie.cpp" />
+    <ClCompile Include="NomjoueurmaispasdansleIHMpcqvivienapasfini.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
