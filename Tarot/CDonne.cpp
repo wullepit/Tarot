@@ -69,5 +69,4 @@ void CDonne::compter_points(int ptf, int bouts, int pts, contrat ctr)
 	{
 		les_defenseurs[i]->majScore(score_defenseurs);
 	}
-	ptf = (ptf + 25 + bonus_pgn + bonus_chlm) * bonus;
 }
