@@ -80,20 +80,20 @@ void CDonne::compter_points(int bouts, int pts, contrat ctr, poignee pgn, camp c
 	{
 		score_preneur = ((ptf - 25)*bonus_ctr) * 3;
 		score_defenseurs = ((-ptf) + 25)*bonus_ctr;
-		victoire = 0;
+		victoire = false;
 	}
 	else if (ptf >= 0)
 	{
 		score_preneur = ((ptf + 25)*bonus_ctr) * 3;
 		score_defenseurs = ((-ptf) - 25)*bonus_ctr;
-		victoire = 1;
+		victoire = true;
 	}
-	if ((camp_poignee == preneur && victoire == 0) || (camp_poignee == defenseur && victoire == 0))
+	if ((camp_poignee == preneur && victoire == false) || (camp_poignee == defenseur && victoire == false))
 	{
 		score_preneur = score_preneur - (3 * bonus_pgn);
 		score_defenseurs = score_defenseurs + bonus_pgn;
 	}
-	else if ((camp_poignee == preneur && victoire == 1) || (camp_poignee == defenseur && victoire == 1))
+	else if ((camp_poignee == preneur && victoire == true) || (camp_poignee == defenseur && victoire == true))
 	{
 		score_preneur = score_preneur + (3 * bonus_pgn);
 		score_defenseurs = score_defenseurs - bonus_pgn;
@@ -103,4 +103,9 @@ void CDonne::compter_points(int bouts, int pts, contrat ctr, poignee pgn, camp c
 	{
 		les_defenseurs[i]->majScore(score_defenseurs);
 	}
+}
+
+void CDonne::petit_bout()
+{
+
 }
