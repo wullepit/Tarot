@@ -60,7 +60,7 @@ int CIHM::annonce_petit()
 {
 
 }
-}
+
 void CIHM::menu()
 {
 	char c;
@@ -84,4 +84,8 @@ void CIHM::menu()
 			break;
 		}
 	} while (x == 0);
+}
+void CIHM::jouer()
+{
+
 }
