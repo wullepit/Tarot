@@ -56,10 +56,11 @@ void CIHM::distributionEncheres()
 	}
 }
  
-void CIHM::annonce_petit()
+/*int CIHM::annonce_petit()
 {
 
-}
+}*/
+
 void CIHM::menu()
 {
 	char c;
@@ -83,4 +84,8 @@ void CIHM::menu()
 			break;
 		}
 	} while (x == 0);
+}
+void CIHM::jouer()
+{
+
 }
