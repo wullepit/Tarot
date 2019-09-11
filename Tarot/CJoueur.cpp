@@ -18,9 +18,8 @@ int CJoueur::lireScore()
 	return (score);
 }
 
-int CJoueur::majScore(int ptf,camp )
+int CJoueur::majScore(int s)
 {
-	
-	score=score+3
-	return(s);
+	score = score + s;
+	return(score);
 }

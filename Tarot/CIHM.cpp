@@ -34,18 +34,15 @@ void distribution()
 			choixJoueur[i] = passe;
 			break;
 		case '1':
-			choixJoueur[i] = passe;
-			break;
-		case '2':
 			choixJoueur[i] = prise;
 			break;
-		case '3':
+		case '2':
 			choixJoueur[i] = garde;
 			break;
-		case '4':
+		case '3':
 			choixJoueur[i] = garde_sans;
 			break;
-		case '5':
+		case '4':
 			choixJoueur[i] = garde_contre;
 			break;
 		}
