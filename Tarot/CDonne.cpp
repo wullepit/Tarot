@@ -1,4 +1,6 @@
 #include "CDonne.h"
+#include "CJoueur.h"
+//#define TESTU_COMPTERPOINTS
 
 CDonne::CDonne()
 {
@@ -24,7 +26,7 @@ CDonne::~CDonne()
 	}
 }
 
-void CDonne::compter_points(int bouts, int pts, contrat ctr, poignee pgn, camp cmp)
+void CDonne::compter_points(int bouts, int pts, poignee pgn, camp cmp)
 {
 	int ptf;
 	int bonus_pgn;
@@ -33,7 +35,7 @@ void CDonne::compter_points(int bouts, int pts, contrat ctr, poignee pgn, camp c
 	int score_preneur;
 	int score_defenseurs;
 	bool victoire;
-	switch (ctr)
+	switch (type_contrat)
 	{
 	case prise:
 		bonus_ctr = 1;
@@ -88,15 +90,31 @@ void CDonne::compter_points(int bouts, int pts, contrat ctr, poignee pgn, camp c
 		score_defenseurs = ((-ptf) - 25)*bonus_ctr;
 		victoire = true;
 	}
-	if ((camp_poignee == preneur && victoire == false) || (camp_poignee == defenseur && victoire == false))
+	if (camp_petit_au_bout != personne)
 	{
-		score_preneur = score_preneur - (3 * bonus_pgn);
-		score_defenseurs = score_defenseurs + bonus_pgn;
+		if (camp_petit_au_bout == preneur)
+		{
+			score_preneur = score_preneur + ((10 * bonus_ctr) * 3);
+			score_defenseurs = score_defenseurs - (10 * bonus_ctr);
+		}
+		else if (camp_petit_au_bout == defenseur)
+		{
+			score_preneur = score_preneur - ((10 * bonus_ctr) * 3);
+			score_defenseurs = score_defenseurs + (10 * bonus_ctr);
+		}
 	}
-	else if ((camp_poignee == preneur && victoire == true) || (camp_poignee == defenseur && victoire == true))
+	if (camp_poignee != personne)
 	{
-		score_preneur = score_preneur + (3 * bonus_pgn);
-		score_defenseurs = score_defenseurs - bonus_pgn;
+		if ((camp_poignee == preneur && victoire == false) || (camp_poignee == defenseur && victoire == false))
+		{
+			score_preneur = score_preneur - (3 * bonus_pgn);
+			score_defenseurs = score_defenseurs + bonus_pgn;
+		}
+		else if ((camp_poignee == preneur && victoire == true) || (camp_poignee == defenseur && victoire == true))
+		{
+			score_preneur = score_preneur + (3 * bonus_pgn);
+			score_defenseurs = score_defenseurs - bonus_pgn;
+		}
 	}
 	le_preneur->majScore(score_preneur);
 	for (int i = 0; i <= 2; i++)
@@ -105,7 +123,18 @@ void CDonne::compter_points(int bouts, int pts, contrat ctr, poignee pgn, camp c
 	}
 }
 
-void CDonne::petit_bout()
+#ifdef TESTU_COMPTERPOINTS
+void main()
 {
-
+	CDonne donne = CDonne();
+	donne.compter_points(0, 55, non, preneur);
+	
+	donne.compter_points(0, 58, non, preneur);
+	donne.compter_points(1, 50, non, preneur);
+	donne.compter_points(1, 52, non, preneur);
+	donne.compter_points(2, 40, non, preneur);
+	donne.compter_points(2, 42, non, preneur);
+	donne.compter_points(3, 35, non, preneur);
+	donne.compter_points(3, 37, non, preneur);
 }
+#endif
