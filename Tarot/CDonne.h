@@ -28,4 +28,5 @@ public:
 	CDonne(CJoueur *donneur, CJoueur *preneur, CJoueur *defenseurs[3]);
 	~CDonne();
 	void compter_points(int ptf, int bouts, int pts, contrat ctr);
+	void petit_bout();
 };

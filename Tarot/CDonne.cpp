@@ -69,3 +69,8 @@ void CDonne::compter_points(int ptf, int bouts, int pts, contrat ctr)
 		les_defenseurs[i]->majScore(score_defenseurs);
 	}
 }
+
+void CDonne::petit_bout()
+{
+
+}

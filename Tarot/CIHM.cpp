@@ -48,3 +48,8 @@ void CIHM::distributionEncheres()
 		}
 	}
 }
+ 
+int CIHM::annonce_petit()
+{
+
+}
