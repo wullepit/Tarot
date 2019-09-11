@@ -4,7 +4,7 @@
 //Déclaration types énumérés
 enum contrat { passe, prise, garde, garde_sans, garde_contre };
 enum camp { preneur, personne, defenseur };
-enum poignee { sans, simple, doublee, triplee, autre };
+enum poignee { non, simple, doublee, triplee, autre };
 enum chelem { sans, reussi, perdu, sans_annonce };
 
 class CDonne

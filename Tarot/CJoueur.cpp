@@ -1,4 +1,7 @@
 #include "CJoueur.h"
+#include "CDonne.h"
+#include <iostream>
+using namespace std;
 
 CJoueur::CJoueur(string nom, int score)
 {
@@ -7,15 +10,16 @@ CJoueur::CJoueur(string nom, int score)
 }
 string CJoueur::lireNom()
 {
-	//A coder
+	return(nom);
 }
 
 int CJoueur::lireScore()
 {
-	//A coder
+	return (score);
 }
 
-int CJoueur::majScore()
+int CJoueur::majScore(int s)
 {
-	//A coder
+	score = score + s;
+	return(score);
 }
