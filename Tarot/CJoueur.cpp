@@ -23,3 +23,9 @@ int CJoueur::majScore(int s)
 	score = score + s;
 	return(score);
 }
+
+string CJoueur::ajout_nom(string nom_joueur)
+{
+	nom = nom_joueur;
+	return string();
+}

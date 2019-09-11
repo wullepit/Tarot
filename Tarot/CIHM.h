@@ -13,4 +13,5 @@ public:
 	void set_joueurs(CJoueur &joueurs);
 	void distributionEncheres(CJoueur lesJoueurs[]);
 	void Jouer();
+	void nom_joueur();
 };
