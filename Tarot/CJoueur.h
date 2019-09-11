@@ -16,9 +16,4 @@ public:
 	string lireNom();
 	int lireScore();
 	int majScore(int s);
-	#ifdef TESTU
-	void testu_majscore();
-	void testu_lirescore();
-	void testu_lirenom();
-	#endif
 };
