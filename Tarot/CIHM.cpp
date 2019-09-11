@@ -56,10 +56,10 @@ void CIHM::distributionEncheres()
 	}
 }
  
-int CIHM::annonce_petit()
+/*int CIHM::annonce_petit()
 {
 
-}
+}*/
 
 void CIHM::menu()
 {
