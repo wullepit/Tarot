@@ -6,12 +6,19 @@ void CIHM::set_partie(CPartie &une_partie)
 {
 	lapartie = &une_partie;
 }
+void CIHM::nom_joueur()
+{
+	for (int i = 0; i < 4; i++)
+	{
+		string nom;
+		cout << "Choississez votre nom : ";
+		cin >> nom;
+		lesjoueurs[i]->ajout_nom(nom);
+	}
+}
 void CIHM::set_joueurs(CJoueur &joueurs)
 {
-//	for (int i = 0; i < 3; i++)
-	//{
-	//lesjoueurs[i] = joueurs;
-	//}
+
 }
 void CIHM::distributionEncheres()
 {
@@ -47,4 +54,34 @@ void CIHM::distributionEncheres()
 			break;
 		}
 	}
+}
+ 
+int CIHM::annonce_petit()
+{
+
+}
+}
+void CIHM::menu()
+{
+	char c;
+	int x;
+	cout << "Jeu de tarot :" << endl;
+	cout << "1:Creer une partie" << endl;
+	do
+	{
+		cin >> c;
+		switch (c)
+		{
+		case '1':
+			jouer();
+			x = 1;
+			break;
+		case '2':
+			x = 1;
+			break;
+		default:
+			x = 0;
+			break;
+		}
+	} while (x == 0);
 }

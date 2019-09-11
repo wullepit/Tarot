@@ -12,5 +12,7 @@ public:
 	void set_partie(CPartie &une_partie);
 	void set_joueurs(CJoueur &joueurs);
 	void distributionEncheres();
-	void Jouer();
+	void jouer();
+	void nom_joueur();
+	void menu();
 };
