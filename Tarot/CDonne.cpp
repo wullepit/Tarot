@@ -12,7 +12,6 @@ CDonne::CDonne(CJoueur *donneur, CJoueur *preneur, CJoueur *defenseurs[3])
 	{
 		this->les_defenseurs[i] = defenseurs[i];
 	}
-
 }
 
 CDonne::~CDonne()
