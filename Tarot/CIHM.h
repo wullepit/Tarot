@@ -15,4 +15,5 @@ public:
 	void jouer();
 	void nom_joueur();
 	void menu();
+	void annonce_petit();
 };
