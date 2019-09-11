@@ -25,7 +25,7 @@ private:
 	CJoueur *les_defenseurs[3];
 public:
 	CDonne();//Constructeur par défaut pour la composition
-	CDonne(int nbpts, int bts, int pts, camp cmp_pgn, camp petit, contrat type_ctr, chelem typ_chlm, poignee typ_pgn, CJoueur *donneur, CJoueur *preneur, CJoueur *defenseurs[3]);
+	CDonne(CJoueur *donneur, CJoueur *preneur, CJoueur *defenseurs[3]);
 	~CDonne();
 	int compter_points(int ptf, int bouts, int pts, contrat ctr);
 };
