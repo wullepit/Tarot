@@ -6,6 +6,7 @@
 //#define TESTU_MAJSCORE
 //#define TESTU_LIRESCORE
 //#define TESTU_LIRENOM
+//#define TESTU_AJOUTNOM
 using namespace std;
 
 CJoueur::CJoueur(string nom, int score)
@@ -29,11 +30,13 @@ int CJoueur::majScore(int s)
 	score = score + s;
 	return(score);
 }
+
 string CJoueur::ajout_nom(string nom_joueur)
 {
 	nom = nom_joueur;
 	return string();
 }
+
 #ifdef TESTU_MAJSCORE
 void main()
 {
@@ -63,6 +66,24 @@ void main()
 	CJoueur testeur2 = CJoueur("756890370", 50);
 	CJoueur testeur3 = CJoueur("testeur", 50);
 	CJoueur testeur4 = CJoueur("ט_ח-_ח'ט-_חט", 50);
+	cout << testeur1.lireNom() << endl;
+	cout << testeur2.lireNom() << endl;
+	cout << testeur3.lireNom() << endl;
+	cout << testeur4.lireNom() << endl;
+}
+#endif
+
+#ifdef TESTU_AJOUTNOM
+void main()
+{
+	CJoueur testeur1 = CJoueur("sans nom", 50);
+	CJoueur testeur2 = CJoueur("sans nom", 50);
+	CJoueur testeur3 = CJoueur("sans nom", 50);
+	CJoueur testeur4 = CJoueur("sans nom", 50);
+	cout << testeur1.ajout_nom("testeur") << endl;
+	cout << testeur2.ajout_nom("azertyuiopqsdfghjklmwxcvbn") << endl;
+	cout << testeur3.ajout_nom("13543541.2") << endl;
+	cout << testeur4.ajout_nom("טיח-ט_ט-י)אחי)(") << endl;
 	cout << testeur1.lireNom() << endl;
 	cout << testeur2.lireNom() << endl;
 	cout << testeur3.lireNom() << endl;
