@@ -25,7 +25,7 @@ CDonne::~CDonne()
 	}
 }
 
-int CDonne::compter_points(int ptf, int bouts, int pts, contrat ctr)
+void CDonne::compter_points(int ptf, int bouts, int pts, contrat ctr)
 {
 	int bonus_ctr;
 	int objectif;
@@ -57,6 +57,16 @@ int CDonne::compter_points(int ptf, int bouts, int pts, contrat ctr)
 	if (ptf < 0)
 	{
 		score_preneur = ((ptf - 25)*bonus_ctr) * 3;
-		score_defenseurs = (ptf + 25)*bonus_ctr;
+		score_defenseurs = ((-ptf) + 25)*bonus_ctr;
+	}
+	else if (ptf >= 0)
+	{
+		score_preneur = ((ptf + 25)*bonus_ctr) * 3;
+		score_defenseurs = ((-ptf) - 25)*bonus_ctr;
+	}
+	le_preneur->majScore(score_preneur);
+	for (int i = 0; i <= 2; i++)
+	{
+		les_defenseurs[i]->majScore(score_defenseurs);
 	}
 }

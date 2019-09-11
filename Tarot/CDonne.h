@@ -27,5 +27,5 @@ public:
 	CDonne();//Constructeur par défaut pour la composition
 	CDonne(CJoueur *donneur, CJoueur *preneur, CJoueur *defenseurs[3]);
 	~CDonne();
-	int compter_points(int ptf, int bouts, int pts, contrat ctr);
+	void compter_points(int ptf, int bouts, int pts, contrat ctr);
 };
