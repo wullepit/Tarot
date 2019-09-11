@@ -1,3 +1,4 @@
+#pragma once
 #include"CIHM.h"
 #include <iostream>
 using namespace std;
@@ -10,16 +11,16 @@ void CIHM::nom_joueur()
 {
 	for (int i = 0; i < 4; i++)
 	{
-		string nom;
+		string n;		
 		cout << "Choississez votre nom : ";
-		cin >> nom;
-		lesjoueurs[i]->ajout_nom(nom);
+		cin >> n;
+		lesjoueurs[i] = new CJoueur(n,0);
 	}
 }
-void CIHM::set_joueurs(CJoueur &joueurs)
+/*void CIHM::set_joueurs(CJoueur &joueurs)
 {
 
-}
+}*/
 void CIHM::distributionEncheres()
 {
 	int choix;
@@ -67,6 +68,7 @@ void CIHM::menu()
 	int x;
 	cout << "Jeu de tarot :" << endl;
 	cout << "1:Creer une partie" << endl;
+	
 	do
 	{
 		cin >> c;
@@ -77,6 +79,7 @@ void CIHM::menu()
 			x = 1;
 			break;
 		case '2':
+			nom_joueur();
 			x = 1;
 			break;
 		default:
@@ -87,5 +90,9 @@ void CIHM::menu()
 }
 void CIHM::jouer()
 {
-
+	nom_joueur();
+	for (int i = 0; i < 4; i++)
+	{
+		cout << "Joueur"<< i+1 <<":" << lesjoueurs[i]->lireNom()<<endl;
+	}
 }

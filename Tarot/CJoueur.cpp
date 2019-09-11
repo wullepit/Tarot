@@ -3,14 +3,15 @@
 #include "CPartie.h"
 #include "CIHM.h"
 #include <iostream>
-#define TESTU_MAJSCORE
+//#define TESTU_MAJSCORE
 //#define TESTU_LIRESCORE
 //#define TESTU_LIRENOM
+
 using namespace std;
 
 CJoueur::CJoueur(string nom, int score)
 {
-	string n = nom;
+	this ->nom = nom;
 	this->score = score;
 }
 string CJoueur::lireNom()
@@ -28,11 +29,11 @@ int CJoueur::majScore(int s)
 	score = score + s;
 	return(score);
 }
-string CJoueur::ajout_nom(string nom_joueur)
+/*string CJoueur::ajout_nom(string nom_joueur)
 {
 	nom = nom_joueur;
-	return string();
-}
+	return(nom);
+}*/
 #ifdef TESTU_MAJSCORE
 void main()
 {
@@ -55,10 +56,9 @@ void main()
 #endif
 #ifdef TESTU_LIRENOM
 void main()
-{
+{	CJoueur testeur3 = CJoueur("testeur", 50);
 	CJoueur testeur1 = CJoueur("azertyuiopqsdfghjklmwxcvbn", 50);
 	CJoueur testeur2 = CJoueur("756890370", 50);
-	CJoueur testeur3 = CJoueur("testeur", 50);
 	CJoueur testeur4 = CJoueur("и_з-_з'и-_зи", 50);
 	cout << testeur1.lireNom() << endl;
 	cout << testeur2.lireNom() << endl;
