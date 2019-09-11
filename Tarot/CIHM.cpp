@@ -13,7 +13,7 @@ void CIHM::set_joueurs(CJoueur &joueurs)
 		lesjoueurs[i] = joueurs;
 	}
 }
-void distributionEncheres()
+void CIHM::distributionEncheres()
 {
 	int choix;
 	int choixJoueur[4];
@@ -47,5 +47,4 @@ void distributionEncheres()
 			break;
 		}
 	}
-	
 }
