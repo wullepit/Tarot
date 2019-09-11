@@ -6,11 +6,20 @@ void CIHM::set_partie(CPartie &une_partie)
 {
 	lapartie = &une_partie;
 }
+void CIHM::nom_joueur()
+{
+	for (int i = 0; i < 4; i++)
+	{
+		string nom;
+		cout << "Choississez votre nom : ";
+		cin >> nom;
+		lesjoueurs[i]->ajout_nom(nom);
+	}
+}
 void CIHM::set_joueurs(CJoueur &joueurs)
 {
 //	for (int i = 0; i < 3; i++)
 	//{
-	//lesjoueurs[i] = joueurs;
 	//}
 }
 void CIHM::distributionEncheres()
