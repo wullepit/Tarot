@@ -11,7 +11,7 @@ private:
 public:
 	void set_partie(CPartie &une_partie);
 	void set_joueurs(CJoueur &joueurs);
-	void distributionEncheres(CJoueur lesJoueurs[]);
+	void distributionEncheres();
 	void Jouer();
 	void nom_joueur();
 };

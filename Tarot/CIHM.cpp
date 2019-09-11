@@ -4,7 +4,7 @@ using namespace std;
 
 void CIHM::set_partie(CPartie &une_partie)
 {
-	lapartie = une_partie;
+	lapartie = &une_partie;
 }
 void CIHM::nom_joueur()
 {

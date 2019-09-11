@@ -12,7 +12,6 @@ CDonne::CDonne(CJoueur *donneur, CJoueur *preneur, CJoueur *defenseurs[3])
 	{
 		this->les_defenseurs[i] = defenseurs[i];
 	}
-
 }
 
 CDonne::~CDonne()
@@ -25,39 +24,83 @@ CDonne::~CDonne()
 	}
 }
 
-int CDonne::compter_points(int ptf, int bouts, int pts, contrat ctr)
+void CDonne::compter_points(int bouts, int pts, contrat ctr, poignee pgn, camp cmp)
 {
+	int ptf;
+	int bonus_pgn;
 	int bonus_ctr;
 	int objectif;
 	int score_preneur;
 	int score_defenseurs;
+	bool victoire;
 	switch (ctr)
 	{
 	case prise:
 		bonus_ctr = 1;
+		break;
 	case garde:
 		bonus_ctr = 2;
+		break;
 	case garde_sans:
 		bonus_ctr = 4;
+		break;
 	case garde_contre:
 		bonus_ctr = 6;
+		break;
 	}
 	switch (bouts)
 	{
 	case'0':
 		objectif = 56;
+		break;
 	case'1':
 		objectif = 51;
+		break;
 	case'2':
 		objectif = 41;
+		break;
 	case'3':
 		objectif = 36;
+		break;
+	}
+	switch (pgn)
+	{
+	case simple:
+		bonus_pgn = 10;
+		break;
+	case doublee:
+		bonus_pgn = 20;
+		break;
+	case triplee:
+		bonus_pgn = 30;
+		break;
 	}
 	ptf = (pts - objectif);
 	if (ptf < 0)
 	{
 		score_preneur = ((ptf - 25)*bonus_ctr) * 3;
-		score_defenseurs = (ptf + 25)*bonus_ctr;
+		score_defenseurs = ((-ptf) + 25)*bonus_ctr;
+		victoire = 0;
 	}
-	ptf = (ptf + 25 + bonus_pgn + bonus_chlm) * bonus;
+	else if (ptf >= 0)
+	{
+		score_preneur = ((ptf + 25)*bonus_ctr) * 3;
+		score_defenseurs = ((-ptf) - 25)*bonus_ctr;
+		victoire = 1;
+	}
+	if ((camp_poignee == preneur && victoire == 0) || (camp_poignee == defenseur && victoire == 0))
+	{
+		score_preneur = score_preneur - (3 * bonus_pgn);
+		score_defenseurs = score_defenseurs + bonus_pgn;
+	}
+	else if ((camp_poignee == preneur && victoire == 1) || (camp_poignee == defenseur && victoire == 1))
+	{
+		score_preneur = score_preneur + (3 * bonus_pgn);
+		score_defenseurs = score_defenseurs - bonus_pgn;
+	}
+	le_preneur->majScore(score_preneur);
+	for (int i = 0; i <= 2; i++)
+	{
+		les_defenseurs[i]->majScore(score_defenseurs);
+	}
 }
