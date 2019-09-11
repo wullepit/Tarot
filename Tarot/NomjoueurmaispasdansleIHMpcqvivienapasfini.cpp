@@ -1,14 +1,12 @@
-// nomjoujou.cpp : définit le point d'entrée pour l'application console.
-//
-
 #include <iostream>
 #include <string>
 #include <vector>
+#include "CJoueur.h"
+#define PASDETEST
 using namespace std;
 
-
+#ifndef PASDETEST
 int main()
-
 {
 	int nombreDeJoueurs;
 	int x = 0;
@@ -33,3 +31,4 @@ int main()
 	}
 	return 0;
 }
+#endif
