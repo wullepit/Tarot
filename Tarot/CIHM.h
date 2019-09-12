@@ -13,6 +13,7 @@ public:
 	//void set_joueurs(CJoueur &joueurs);
 	void distributionEncheres();
 	void jouer();
+	void creer();
 	void nom_joueur();
 	void menu();
 	void annonce_petit();
