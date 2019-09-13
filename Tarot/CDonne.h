@@ -25,11 +25,11 @@ private:
 	CJoueur *les_defenseurs[3];
 public:
 	CDonne(CJoueur *donneur);
-	CDonne(CJoueur *donneur, CJoueur *preneur, CJoueur *defenseurs[3]);		//Constructeur
+	//CDonne(CJoueur *donneur, CJoueur *preneur, CJoueur *defenseurs[3]);
 	~CDonne();
 	void CompterPoints(int bouts, int pts, poignee pgn, camp cmp);
 	void SetCampPetitAuBout(camp p);
 	void SetTypePoignee(camp poigne, poignee typ);
 	void SetChelemD(chelem type);
-	void SetContratD(CJoueur *d, contrat c);
+	void SetContratD(CJoueur *d, contrat c,CJoueur *lesDefenseurs[]);
 };

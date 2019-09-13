@@ -3,13 +3,18 @@
 #include <iostream>
 using namespace std;
 //#define TESTU_COMPTERPOINTS
-
+//#define TESTU_SETCAMPPETIT
+//#define TESTU_SETPOIGNEE
+//#define TESTU_SETCHELEM
+//#define TESTU_SETCONTRAT
 
 CDonne::CDonne(CJoueur * donneur)
 {
 	le_donneur = donneur;
 }
 
+//vieux constructeur
+/*
 CDonne::CDonne(CJoueur *donneur, CJoueur *preneur, CJoueur *defenseurs[3])
 {
 	this->le_donneur = donneur;
@@ -19,6 +24,7 @@ CDonne::CDonne(CJoueur *donneur, CJoueur *preneur, CJoueur *defenseurs[3])
 		this->les_defenseurs[i] = defenseurs[i];
 	}
 }
+*/
 
 CDonne::~CDonne()
 {
@@ -30,6 +36,7 @@ CDonne::~CDonne()
 	}
 }
 
+//à tester
 void CDonne::CompterPoints(int bouts, int pts, poignee pgn, camp cmp)
 {
 	int ptf = 0;
@@ -127,46 +134,100 @@ void CDonne::CompterPoints(int bouts, int pts, poignee pgn, camp cmp)
 	}
 }
 
+//ok
 void CDonne::SetCampPetitAuBout(camp p)
 {
 	campPetitAuBout = p;
 }
 
+//ok
 void CDonne::SetTypePoignee(camp poigne, poignee typ)
 {
 	typePoignee = typ;
 	campPoignee = poigne;
 }
 
+//ok
 void CDonne::SetChelemD(chelem type)
 {
 	typeChelem = type;
 }
 
-void CDonne::SetContratD(CJoueur *d, contrat c)
+void CDonne::SetContratD(CJoueur *d, contrat c,CJoueur * lesDefenseurs[])
 {
 	typeContrat = c;
 	lePreneur = d;
+	for (int i = 0; i < 3; i++)
+	{
+		les_defenseurs[i] = lesDefenseurs[i];
+
+	}
 }
 
 #ifdef TESTU_COMPTERPOINTS
 void main()
 {
 	CJoueur le_donneur = CJoueur("testeur_donneur", 0);
-	CJoueur le_preneur = CJoueur("testeur_preneur", 0);
-	CJoueur *les_defenseurs[3];
-	for (int i = 0; i <= 2; i++)
-	{
-		les_defenseurs[i] = new CJoueur("testeur_defenseur" + i, 0);
-	}
-	CDonne donne(&le_donneur, &le_preneur, les_defenseurs);
-	donne.compter_points(0, 55, non, preneur);//perdu
-	donne.compter_points(0, 57, non, preneur);//gagné
-	donne.compter_points(1, 50, non, preneur);//perdu
-	donne.compter_points(1, 52, non, preneur);//gagné
-	donne.compter_points(2, 40, non, preneur);//perdu
-	donne.compter_points(2, 42, non, preneur);//gagné
-	donne.compter_points(3, 35, non, preneur);//perdu
-	donne.compter_points(3, 37, non, preneur);//gagné
+	CDonne donne(&le_donneur);
+	donne.CompterPoints(0, 55, non, preneur);//perdu
+	donne.CompterPoints(0, 57, non, preneur);//gagné
+	donne.CompterPoints(1, 50, non, preneur);//perdu
+	donne.CompterPoints(1, 52, non, preneur);//gagné
+	donne.CompterPoints(2, 40, non, preneur);//perdu
+	donne.CompterPoints(2, 42, non, preneur);//gagné
+	donne.CompterPoints(3, 35, non, preneur);//perdu
+	donne.CompterPoints(3, 37, non, preneur);//gagné
+}
+#endif
+
+#ifdef TESTU_SETCAMPPETIT
+void main()
+{
+	CJoueur le_donneur = CJoueur("testeur_donneur", 0);
+	CDonne donne(&le_donneur);
+	donne.SetCampPetitAuBout(personne);
+	donne.SetCampPetitAuBout(preneur);
+	donne.SetCampPetitAuBout(defenseur);
+}	
+#endif
+
+#ifdef TESTU_SETPOIGNEE
+void main()
+{
+	CJoueur le_donneur = CJoueur("testeur_donneur", 0);
+	CDonne donne(&le_donneur);
+	donne.SetTypePoignee(personne, non);
+	donne.SetTypePoignee(personne, simple);
+	donne.SetTypePoignee(personne, doublee);
+	donne.SetTypePoignee(personne, triplee);
+	donne.SetTypePoignee(preneur, non);
+	donne.SetTypePoignee(preneur, simple);
+	donne.SetTypePoignee(preneur, doublee);
+	donne.SetTypePoignee(preneur, triplee);
+	donne.SetTypePoignee(defenseur, non);
+	donne.SetTypePoignee(defenseur, simple);
+	donne.SetTypePoignee(defenseur, doublee);
+	donne.SetTypePoignee(defenseur, triplee);
+}
+#endif
+
+#ifdef TESTU_SETCHELEM
+void main()
+{
+	CJoueur le_donneur = CJoueur("testeur_donneur", 0);
+	CDonne donne(&le_donneur);
+	donne.SetChelemD(sans);
+	donne.SetChelemD(reussi);
+	donne.SetChelemD(perdu);
+	donne.SetChelemD(sans_annonce);
+}
+#endif
+
+#ifdef TESTU_SETCONTRAT
+void main()
+{
+	CJoueur le_donneur = CJoueur("testeur_donneur", 0);
+	CDonne donne(&le_donneur);
+	donne.SetContratD()
 }
 #endif

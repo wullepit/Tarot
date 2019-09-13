@@ -3,18 +3,24 @@
 #include <iostream>
 #include <Windows.h>
 using namespace std;
-//#define TESTU_SETPARTIE
-//#define TESTU_NOMJOUEUR
-//#define TESTU_DISTRIBUTION
-//#define TESTU_MENU
-//#define TESTU_CREER
-//#define TESTU_JOUER
+#define TESTU_SETPARTIE
+#define TESTU_NOMJOUEUR
+#define TESTU_DISTRIBUTION
+#define TESTU_MENU
+#define TESTU_CREER
+#define TESTU_JOUER
+#define TESTU_ANNONCEPETIT
+#define TESTU_ANNONCEPOIGNEE
+#define TESTU_ANNONCECHELEM
+#define TESTU_ANNONCECONTRAT
 
+//à tester
 void CIHM::SetPartie()
 {
 	laPartie = new CPartie(lesJoueurs);
 }
 
+//à tester
 void CIHM::NomJoueur()
 {
 	for (int i = 0; i < 4; i++)
@@ -29,8 +35,11 @@ void CIHM::NomJoueur()
 void CIHM::AnnonceContrat()
 {
 	int j, p;
+	int n = 0;
 	char choix;
+	string a;
 	bool jouer = true;
+	CJoueur *lesDef[3];
 	contrat choixJoueur;
 	int x = 0;
 	cout << "Y a-t-il un preneur" << endl <<
@@ -41,7 +50,7 @@ void CIHM::AnnonceContrat()
 		cout << "Qui est le preneur ? " << endl;
 		for (int i = 0; i < 4; i++)
 		{
-			cout << i + 1 << ":" << lesJoueurs[i]->LireNom();
+			cout << i + 1 << ":" << lesJoueurs[i]->LireNom() << endl;
 		}
 		cin >> j;
 		cout << "Annonce du preneur:" << endl
@@ -68,9 +77,14 @@ void CIHM::AnnonceContrat()
 		case '4':
 			choixJoueur = garde_contre;
 			break;
-		}		
-		if(lesJoueurs[])
-		laPartie->SetContrat(lesJoueurs[j], choixJoueur);
+		}
+		for (int l = 0; l < 4; l++)
+		{
+			if (lesJoueurs[l] != lesJoueurs[j])
+				lesDef[n] = lesJoueurs[l];
+			n++;
+		}
+		laPartie->SetContrat(lesJoueurs[j], choixJoueur,lesDef);
 	}
 	else
 	{
@@ -78,6 +92,7 @@ void CIHM::AnnonceContrat()
 	}
 }
 
+//à tester
 void CIHM::AnnoncePetit()
 {
 	bool t = false;
@@ -109,6 +124,7 @@ void CIHM::AnnoncePetit()
 	laPartie->SetPetitAuBout(petit);
 }
 
+//à tester
 void CIHM::AnnoncePoignée()
 {
 	char cmpP;
@@ -167,6 +183,7 @@ void CIHM::AnnoncePoignée()
 	laPartie->SetPoignee(campP, typePoignee);
 }
 
+//à tester
 void CIHM::Menu()
 {
 	char c;
@@ -205,6 +222,8 @@ void CIHM::Menu()
 		}
 	} while (x == 0);
 }
+
+//à tester
 void CIHM::Creer()
 {
 	cout << "Entrez le nom des joueurs dans l'ordre de donne (sens inverse des aiguilles d'une montre) :" << endl;
@@ -214,10 +233,11 @@ void CIHM::Creer()
 		cout << "Joueur" << i + 1 << ":" << lesJoueurs[i]->LireNom() << endl;
 	}
 	cout << "Le donneur est " << lesJoueurs[0]->LireNom() << endl;
-
+	DistributionEncheres();
 
 }
 
+//à tester
 void CIHM::AnnonceChelem()
 {
 	char c;
@@ -275,4 +295,16 @@ void CIHM::Jouer()
 #endif
 
 #ifdef TESTU_JOUER
+#endif
+
+#ifdef TESTU_ANNONCEPETIT
+#endif
+
+#ifdef TESTU_ANNONCECONTRAT
+#endif
+
+#ifdef TESTU_ANNONCECHELEM
+#endif
+
+#ifdef TESTU_ANNONCEPOIGNEE
 #endif
