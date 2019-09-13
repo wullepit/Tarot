@@ -9,6 +9,6 @@
 void main()
 {
 	CIHM ihm = CIHM();
-	ihm.menu();
+	ihm.Menu();
 }
 #endif

@@ -1,6 +1,14 @@
 #include "CDonne.h"
 #include "CJoueur.h"
-#define TESTU_COMPTERPOINTS
+#include <iostream>
+using namespace std;
+//#define TESTU_COMPTERPOINTS
+
+
+CDonne::CDonne(CJoueur * donneur)
+{
+	le_donneur = donneur;
+}
 
 CDonne::CDonne(CJoueur *donneur, CJoueur *preneur, CJoueur *defenseurs[3])
 {
@@ -22,7 +30,7 @@ CDonne::~CDonne()
 	}
 }
 
-void CDonne::compter_points(int bouts, int pts, poignee pgn, camp cmp)
+void CDonne::CompterPoints(int bouts, int pts, poignee pgn, camp cmp)
 {
 	int ptf = 0;
 	int bonus_pgn = 0;
@@ -112,11 +120,16 @@ void CDonne::compter_points(int bouts, int pts, poignee pgn, camp cmp)
 			score_defenseurs = score_defenseurs - bonus_pgn;
 		}
 	}
-	le_preneur->majScore(score_preneur);
+	le_preneur->MajScore(score_preneur);
 	for (int i = 0; i <= 2; i++)
 	{
-		les_defenseurs[i]->majScore(score_defenseurs);
+		les_defenseurs[i]->MajScore(score_defenseurs);
 	}
+}
+
+void CDonne::SetCampPetitAuBout(camp p)
+{
+	camp_petit_au_bout= p;
 }
 
 #ifdef TESTU_COMPTERPOINTS
