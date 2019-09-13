@@ -16,5 +16,5 @@ public:
 	string LireNom();
 	int LireScore();
 	int MajScore(int s);
-//string ajout_nom(string nom_joueur);
+	//string ajout_nom(string nom_joueur);
 };

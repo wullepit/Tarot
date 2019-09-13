@@ -14,7 +14,7 @@ CDonne::CDonne(CJoueur * donneur)
 CDonne::CDonne(CJoueur *donneur, CJoueur *preneur, CJoueur *defenseurs[3])
 {
 	this->le_donneur = donneur;
-	this->le_preneur = preneur;
+	this->lePreneur = preneur;
 	for (int i = 0; i <= 2; i++)
 	{
 		this->les_defenseurs[i] = defenseurs[i];
@@ -25,7 +25,7 @@ CDonne::CDonne(CJoueur *donneur, CJoueur *preneur, CJoueur *defenseurs[3])
 CDonne::~CDonne()
 {
 	delete le_donneur;
-	delete le_preneur;
+	delete lePreneur;
 	for (int i = 0; i <= 2; i++)
 	{
 		delete les_defenseurs[i];
@@ -42,7 +42,7 @@ void CDonne::CompterPoints(int bouts, int pts, poignee pgn, camp cmp)
 	int score_preneur = 0;
 	int score_defenseurs = 0;
 	bool victoire = false;
-	switch (type_contrat)//pas ok
+	switch (typeContrat)//pas ok
 	{
 	case prise:
 		bonus_ctr = 1;
@@ -97,33 +97,33 @@ void CDonne::CompterPoints(int bouts, int pts, poignee pgn, camp cmp)
 		score_defenseurs = ((-ptf) - 25)*bonus_ctr;
 		victoire = true;
 	}
-	if (camp_petit_au_bout != personne)//pas ok
+	if (campPetitAuBout != personne)//pas ok
 	{
-		if (camp_petit_au_bout == preneur)
+		if (campPetitAuBout == preneur)
 		{
 			score_preneur = score_preneur + ((10 * bonus_ctr) * 3);
 			score_defenseurs = score_defenseurs - (10 * bonus_ctr);
 		}
-		else if (camp_petit_au_bout == defenseur)
+		else if (campPetitAuBout == defenseur)
 		{
 			score_preneur = score_preneur - ((10 * bonus_ctr) * 3);
 			score_defenseurs = score_defenseurs + (10 * bonus_ctr);
 		}
 	}
-	if (camp_poignee != personne)//pas ok
+	if (campPoignee != personne)//pas ok
 	{
-		if ((camp_poignee == preneur && victoire == false) || (camp_poignee == defenseur && victoire == false))
+		if ((campPoignee == preneur && victoire == false) || (campPoignee == defenseur && victoire == false))
 		{
 			score_preneur = score_preneur - (3 * bonus_pgn);
 			score_defenseurs = score_defenseurs + bonus_pgn;
 		}
-		else if ((camp_poignee == preneur && victoire == true) || (camp_poignee == defenseur && victoire == true))
+		else if ((campPoignee == preneur && victoire == true) || (campPoignee == defenseur && victoire == true))
 		{
 			score_preneur = score_preneur + (3 * bonus_pgn);
 			score_defenseurs = score_defenseurs - bonus_pgn;
 		}
 	}
-	le_preneur->MajScore(score_preneur);
+	lePreneur->MajScore(score_preneur);
 	for (int i = 0; i <= 2; i++)
 	{
 		les_defenseurs[i]->MajScore(score_defenseurs);
@@ -133,7 +133,25 @@ void CDonne::CompterPoints(int bouts, int pts, poignee pgn, camp cmp)
 //ok
 void CDonne::SetCampPetitAuBout(camp p)
 {
-	camp_petit_au_bout = p;
+	campPetitAuBout = p;
+}
+
+void CDonne::SetTypePoignee(camp poigne, poignee typ)
+{
+	typePoignee = typ;
+	campPoignee = poigne;
+
+}
+
+void CDonne::SetChelemD(chelem type)
+{
+	typeChelem = type;
+}
+
+void CDonne::SetContratD(CJoueur *d, contrat c)
+{
+	typeContrat = c;
+	lePreneur = d;
 }
 
 #ifdef TESTU_COMPTERPOINTS
