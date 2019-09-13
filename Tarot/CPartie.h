@@ -16,4 +16,7 @@ public:
 	~CPartie();
 	void SetPetitAuBout(camp petit);
 	void CreerUneDonne(CJoueur * leDonneur);
+	void SetPoignee(camp p, poignee type);
+	void SetChelem(chelem t);
+	void SetContrat(CJoueur *lesJoueurs, contrat t);
 };

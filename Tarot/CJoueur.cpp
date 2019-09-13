@@ -11,7 +11,7 @@ using namespace std;
 
 CJoueur::CJoueur(string nom, int score)
 {
-	this ->nom = nom;
+	this->nom = nom;
 	this->score = score;
 }
 
@@ -55,7 +55,8 @@ void main()
 
 #ifdef TESTU_LIRENOM
 void main()
-{	CJoueur testeur3 = CJoueur("testeur", 50);
+{
+	CJoueur testeur3 = CJoueur("testeur", 50);
 	CJoueur testeur1 = CJoueur("azertyuiopqsdfghjklmwxcvbn", 50);
 	CJoueur testeur2 = CJoueur("756890370", 50);
 	CJoueur testeur4 = CJoueur("и_з-_з'и-_зи", 50);

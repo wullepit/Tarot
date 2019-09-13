@@ -17,4 +17,7 @@ public:
 	void NomJoueur();
 	void Menu();
 	void AnnoncePetit();
+	void AnnoncePoignée();
+	void AnnonceChelem();
+	void AnnonceContrat();
 };

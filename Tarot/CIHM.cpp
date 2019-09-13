@@ -14,6 +14,7 @@ void CIHM::SetPartie()
 {
 	laPartie = new CPartie(lesJoueurs);
 }
+
 void CIHM::NomJoueur()
 {
 	for (int i = 0; i < 4; i++)
@@ -27,14 +28,23 @@ void CIHM::NomJoueur()
 
 void CIHM::DistributionEncheres()
 {
-	int choix;
-	int choixJoueur[4];
+	int j, p;
+	char choix;
+	bool jouer = true;
+	contrat choixJoueur;
 	int x = 0;
-	int nbJoueurs = 4;
-	for (int i = 0; i < 4; i++)
+	cout << "Y a-t-il un preneur" << endl <<
+		"1:oui" << endl << "2:non" << endl;
+	cin >> p;
+	if (p == 1)
 	{
-		cout << "Annonce du joueur:" << i + 1 << endl
-			<< "0 : Passe" << endl
+		cout << "Qui est le preneur ? " << endl;
+		for (int i = 0; i < 4; i++)
+		{
+			cout << i + 1 << ":" << lesJoueurs[i]->LireNom();
+		}
+		cin >> j;
+		cout << "Annonce du preneur:" << endl
 			<< "1 : Prise" << endl
 			<< "2 : Garde" << endl
 			<< "3 : Garde-Sans" << endl
@@ -42,22 +52,28 @@ void CIHM::DistributionEncheres()
 		cin >> choix;
 		switch (choix)
 		{
-		case '0':
-			choixJoueur[i] = passe;
-			break;
+			/*	case '0':
+					choixJoueur[j] = passe;
+					break;
+			*/
 		case '1':
-			choixJoueur[i] = prise;
+			choixJoueur = prise;
 			break;
 		case '2':
-			choixJoueur[i] = garde;
+			choixJoueur = garde;
 			break;
 		case '3':
-			choixJoueur[i] = garde_sans;
+			choixJoueur = garde_sans;
 			break;
 		case '4':
-			choixJoueur[i] = garde_contre;
+			choixJoueur = garde_contre;
 			break;
 		}
+		laPartie->SetContrat(lesJoueurs[j], choixJoueur);
+	}
+	else
+	{
+		// Distribuez une nouvelle donne
 	}
 }
 
@@ -90,6 +106,64 @@ void CIHM::AnnoncePetit()
 	} while (t == true);
 	//demander a la partie de mettre a jour le petit au bout de la donne courante
 	laPartie->SetPetitAuBout(petit);
+}
+
+void CIHM::AnnoncePoignée()
+{
+	char cmpP;
+	char typeP;
+	camp campP;
+	poignee typePoignee;
+	bool t = false;
+	bool p;
+	do
+	{
+		switch (cmpP)//Dans quel camp est la poignée
+		{
+		case '1':
+			campP = preneur;
+			p = true;
+			break;
+		case '2':
+			campP = defenseur;
+			p = true;
+			break;
+		case '3':
+			campP = personne;
+			p = false;
+			break;
+		default:
+			t = true;
+			break;
+		}
+	} while (t == true);
+	if (p == true)
+	{
+		//Type de poignee ?
+		do {
+			switch (typeP)
+			{
+			case '1':
+				typePoignee = simple;
+				break;
+			case '2':
+				typePoignee = doublee;
+				break;
+			case '3':
+				typePoignee = triplee;
+				break;
+			default:
+				t = false;
+				break;
+			}
+		} while (t == false);
+	}
+	else
+	{
+		typePoignee = non;
+	}
+	//Appel de méthode pour mettre a jour la poignee
+	laPartie->SetPoignee(campP, typePoignee);
 }
 
 void CIHM::Menu()
@@ -140,6 +214,41 @@ void CIHM::Creer()
 	}
 	cout << "Le donneur est " << lesJoueurs[0]->LireNom() << endl;
 
+
+}
+
+void CIHM::AnnonceChelem()
+{
+	char c;
+	bool x = false;
+	chelem type;
+	do
+	{
+		switch (c)
+		{
+		case '1':
+			type = sans;
+			break;
+		case '2':
+			type = reussi;
+			break;
+		case '3':
+			type = perdu;
+			break;
+		case '4':
+			type = sans_annonce;
+			break;
+		default:
+			x = true;
+			break;
+		}
+
+	} while (x == true);
+	laPartie->SetChelem(type);
+}
+
+void CIHM::AnnonceContrat()
+{
 
 }
 
