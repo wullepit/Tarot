@@ -1,10 +1,7 @@
 #include "CDonne.h"
 #include "CJoueur.h"
-//#define TESTU_COMPTERPOINTS
-
-CDonne::CDonne()
-{
-}
+#define TESTU_COMPTERPOINTS
+//#define TEST
 
 CDonne::CDonne(CJoueur *donneur, CJoueur *preneur, CJoueur *defenseurs[3])
 {
@@ -28,13 +25,13 @@ CDonne::~CDonne()
 
 void CDonne::compter_points(int bouts, int pts, poignee pgn, camp cmp)
 {
-	int ptf;
-	int bonus_pgn;
-	int bonus_ctr;
-	int objectif;
-	int score_preneur;
-	int score_defenseurs;
-	bool victoire;
+	int ptf = 0;
+	int bonus_pgn = 0;
+	int bonus_ctr = 1;
+	int objectif = 0;
+	int score_preneur = 0;
+	int score_defenseurs = 0;
+	bool victoire = false;
 	switch (type_contrat)
 	{
 	case prise:
@@ -52,16 +49,16 @@ void CDonne::compter_points(int bouts, int pts, poignee pgn, camp cmp)
 	}
 	switch (bouts)
 	{
-	case'0':
+	case 0:
 		objectif = 56;
 		break;
-	case'1':
+	case 1:
 		objectif = 51;
 		break;
-	case'2':
+	case 2:
 		objectif = 41;
 		break;
-	case'3':
+	case 3:
 		objectif = 36;
 		break;
 	}
@@ -126,15 +123,31 @@ void CDonne::compter_points(int bouts, int pts, poignee pgn, camp cmp)
 #ifdef TESTU_COMPTERPOINTS
 void main()
 {
-	CDonne donne = CDonne();
+	CJoueur le_donneur = CJoueur("testeur_donneur", 0);
+	CJoueur le_preneur = CJoueur("testeur_preneur", 0);
+	CJoueur *les_defenseurs[3];
+	for (int i = 0; i <= 2; i++)
+	{
+		les_defenseurs[i] = new CJoueur("testeur_defenseur" + i, 0);
+	}
+	CDonne donne(&le_donneur, &le_preneur, les_defenseurs);
 	donne.compter_points(0, 55, non, preneur);
-	
-	donne.compter_points(0, 58, non, preneur);
+	CJoueur le_preneur("testeur_preneur", 0);
+	donne.compter_points(0, 57, non, preneur);
+	CJoueur le_preneur("testeur_preneur", 0);
 	donne.compter_points(1, 50, non, preneur);
+	CJoueur le_preneur("testeur_preneur", 0);
 	donne.compter_points(1, 52, non, preneur);
+	CJoueur le_preneur("testeur_preneur", 0);
 	donne.compter_points(2, 40, non, preneur);
+	CJoueur le_preneur("testeur_preneur", 0);
 	donne.compter_points(2, 42, non, preneur);
+	CJoueur le_preneur("testeur_preneur", 0);
 	donne.compter_points(3, 35, non, preneur);
+	CJoueur le_preneur("testeur_preneur", 0);
 	donne.compter_points(3, 37, non, preneur);
 }
+#endif
+
+#ifdef TEST
 #endif

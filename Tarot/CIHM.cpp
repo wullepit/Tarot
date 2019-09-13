@@ -2,11 +2,18 @@
 #include"CIHM.h"
 #include <iostream>
 using namespace std;
+//#define TESTU_SETPARTIE
+//#define TESTU_NOMJOUEUR
+//#define TESTU_DISTRIBUTION
+//#define TESTU_MENU
+//#define TESTU_CREER
+//#define TESTU_JOUER
 
 void CIHM::set_partie(CPartie &une_partie)
 {
 	lapartie = &une_partie;
 }
+
 void CIHM::nom_joueur()
 {
 	for (int i = 0; i < 4; i++)
@@ -17,10 +24,13 @@ void CIHM::nom_joueur()
 		lesjoueurs[i] = new CJoueur(n, 0);
 	}
 }
-/*void CIHM::set_joueurs(CJoueur &joueurs)
-{
 
-}*/
+/*
+void CIHM::set_joueurs(CJoueur &joueurs)
+{
+}
+*/
+
 void CIHM::distributionEncheres()
 {
 	int choix;
@@ -57,10 +67,11 @@ void CIHM::distributionEncheres()
 	}
 }
 
-/*int CIHM::annonce_petit()
+/*
+int CIHM::annonce_petit()
 {
-
-}*/
+}
+*/
 
 void CIHM::menu()
 {
@@ -98,6 +109,7 @@ void CIHM::menu()
 		}
 	} while (x == 0);
 }
+
 void CIHM::creer()
 {
 	nom_joueur();
@@ -119,3 +131,21 @@ void CIHM::jouer()
 		-lecture et maj des points totaux
 	*/
 }
+
+#ifdef TESTU_SETPARTIE
+#endif
+
+#ifdef TESTU_NOMJOUEUR
+#endif
+
+#ifdef TESTU_DISTRIBUTION
+#endif
+
+#ifdef TESTU_MENU
+#endif
+
+#ifdef TESTU_CREER
+#endif
+
+#ifdef TESTU_JOUER
+#endif
