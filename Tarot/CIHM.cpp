@@ -1,6 +1,7 @@
 #pragma once
 #include"CIHM.h"
 #include <iostream>
+#include <Windows.h>
 using namespace std;
 
 void CIHM::set_partie(CPartie &une_partie)
@@ -66,33 +67,36 @@ void CIHM::menu()
 {
 	char c;
 	int x;
-	cout << "Jeu de tarot :" << endl << "Entrez le nom des joueurs dans l'ordre de donne (sens inverse des aiguilles d'une montre)" << endl;
-	creer();
-	cout << "1:Nouvelle Donne" << endl;
-	cout << "2:Lire partie" << endl;
-	cout << "3:Enregistrer la partie /! NE PAS APPUYER" << endl;
-
 	do
 	{
+
+		cout << "Jeu de tarot :" << endl << endl
+			<< "1:Creer une partie" << endl
+			<< "2:Lire partie" << endl 
+			<< "q:quitter" << endl << endl << ">";
+
 		cin >> c;
 		switch (c)
 		{
 		case '1':
-			jouer();
+			system("cls");
+			creer();
 			x = 1;
 			break;
+
 		case '2':
-			//	jouer();
-			break;
-		case '3':
 			/* voir csv */
 			x = 1;
 			break;
-		case '4':
-			cout << "je vous avais prevenu :p";
-			break;
+		case 'Q':
+		case 'q':
 			x = 1;
+			break;
 		default:
+			system("cls");
+			cout << "choix non valide";
+			Sleep(1000);
+			system("cls");
 			x = 0;
 			break;
 		}
@@ -100,12 +104,13 @@ void CIHM::menu()
 }
 void CIHM::creer()
 {
+	cout << "Entrez le nom des joueurs dans l'ordre de donne (sens inverse des aiguilles d'une montre) :" << endl;
 	nom_joueur();
 	for (int i = 0; i < 4; i++)
 	{
 		cout << "Joueur" << i + 1 << ":" << lesjoueurs[i]->lireNom() << endl;
 	}
-	cout << "Le premier donneur est le joueur 1." << endl;
+	cout << "Le donneur est " <<lesjoueurs[0]->lireNom() << endl;
 
 
 }
