@@ -29,8 +29,11 @@ void CIHM::NomJoueur()
 void CIHM::DistributionEncheres()
 {
 	int j, p;
+	int n = 0;
 	char choix;
+	string a;
 	bool jouer = true;
+	CJoueur *lesDef[3];
 	contrat choixJoueur;
 	int x = 0;
 	cout << "Y a-t-il un preneur" << endl <<
@@ -41,7 +44,7 @@ void CIHM::DistributionEncheres()
 		cout << "Qui est le preneur ? " << endl;
 		for (int i = 0; i < 4; i++)
 		{
-			cout << i + 1 << ":" << lesJoueurs[i]->LireNom();
+			cout << i + 1 << ":" << lesJoueurs[i]->LireNom() << endl;
 		}
 		cin >> j;
 		cout << "Annonce du preneur:" << endl
@@ -69,7 +72,13 @@ void CIHM::DistributionEncheres()
 			choixJoueur = garde_contre;
 			break;
 		}
-		laPartie->SetContrat(lesJoueurs[j], choixJoueur);
+		for (int l = 0; l < 4; l++)
+		{
+			if (lesJoueurs[l] != lesJoueurs[j])
+				lesDef[n] = lesJoueurs[l];
+			n++;
+		}
+		laPartie->SetContrat(lesJoueurs[j], choixJoueur,*lesDef);
 	}
 	else
 	{
@@ -213,7 +222,7 @@ void CIHM::Creer()
 		cout << "Joueur" << i + 1 << ":" << lesJoueurs[i]->LireNom() << endl;
 	}
 	cout << "Le donneur est " << lesJoueurs[0]->LireNom() << endl;
-
+	DistributionEncheres();
 
 }
 
