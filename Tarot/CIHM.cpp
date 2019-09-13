@@ -96,12 +96,6 @@ void CIHM::Menu()
 {
 	char c;
 	int x;
-	cout << "Jeu de tarot :" << endl << "Entrez le nom des joueurs dans l'ordre de donne (sens inverse des aiguilles d'une montre)" << endl;
-	creer();
-	cout << "1:Nouvelle Donne" << endl;
-	cout << "2:Lire partie" << endl;
-	cout << "3:Enregistrer la partie /! NE PAS APPUYER" << endl;
-
 	do
 	{
 
@@ -115,7 +109,7 @@ void CIHM::Menu()
 		{
 		case '1':
 			system("cls");
-			creer();
+			Creer();
 			x = 1;
 			break;
 
@@ -145,7 +139,7 @@ void CIHM::Creer()
 	{
 		cout << "Joueur" << i + 1 << ":" << lesJoueurs[i]->LireNom() << endl;
 	}
-	cout << "Le donneur est " <<lesjoueurs[0]->lireNom() << endl;
+	cout << "Le donneur est " <<lesJoueurs[0]->LireNom() << endl;
 
 
 }
