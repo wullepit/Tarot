@@ -59,9 +59,9 @@ void main()
 	CJoueur testeur1 = CJoueur("azertyuiopqsdfghjklmwxcvbn", 50);
 	CJoueur testeur2 = CJoueur("756890370", 50);
 	CJoueur testeur4 = CJoueur("и_з-_з'и-_зи", 50);
-	cout << testeur1.lireNom() << endl;
-	cout << testeur2.lireNom() << endl;
-	cout << testeur3.lireNom() << endl;
-	cout << testeur4.lireNom() << endl;
+	cout << testeur1.LireNom() << endl;
+	cout << testeur2.LireNom() << endl;
+	cout << testeur3.LireNom() << endl;
+	cout << testeur4.LireNom() << endl;
 }
 #endif
