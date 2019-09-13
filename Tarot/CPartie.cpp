@@ -40,7 +40,7 @@ void CPartie::SetChelem(chelem t)
 	lesDonnes[nDonne - 1]->SetChelemD(t);
 }
 
-void CPartie::SetContrat(CJoueur * lePreneur, contrat t, CJoueur * lesD)
+void CPartie::SetContrat(CJoueur * lePreneur, contrat t, CJoueur * lesD[])
 {
 	lesDonnes[nDonne - 1]->SetContratD(lePreneur, t, lesD);
 }

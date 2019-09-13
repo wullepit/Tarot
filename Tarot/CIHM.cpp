@@ -78,7 +78,7 @@ void CIHM::DistributionEncheres()
 				lesDef[n] = lesJoueurs[l];
 			n++;
 		}
-		laPartie->SetContrat(lesJoueurs[j], choixJoueur,*lesDef);
+		laPartie->SetContrat(lesJoueurs[j], choixJoueur,lesDef);
 	}
 	else
 	{

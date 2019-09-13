@@ -148,11 +148,15 @@ void CDonne::SetChelemD(chelem type)
 	typeChelem = type;
 }
 
-void CDonne::SetContratD(CJoueur *d, contrat c,CJoueur * lesDefenseurs)
+void CDonne::SetContratD(CJoueur *d, contrat c,CJoueur * lesDefenseurs[])
 {
 	typeContrat = c;
 	lePreneur = d;
-	*les_defenseurs = lesDefenseurs;
+	for (int i = 0; i < 3; i++)
+	{
+		les_defenseurs[i] = lesDefenseurs[i];
+
+	}
 }
 
 #ifdef TESTU_COMPTERPOINTS
