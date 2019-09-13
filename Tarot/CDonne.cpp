@@ -30,46 +30,16 @@ CDonne::~CDonne()
 	}
 }
 
-/*camp CDonne::annonce_petit()
-{
-	bool t = false;
-	camp petit;
-	char c;
-	cout << "Y a-t-il eu le petit au bout ? Si oui, par quel camp ?" << endl;
-	cout << "1: Pas de petit au bout" << endl << "2: Par le preneur" << endl << "3: Par les defenseurs" << endl;
-	cin >> c;
-
-	do
-	{
-		switch (c)
-		{
-		case '1':
-			petit = personne;
-			break;
-		case '2':
-			petit = preneur;
-			break;
-		case '3':
-			petit = defenseur;
-			break;
-		default:
-			t = true;
-			break;
-		}
-	} while (t == true);
-	return (petit);
-}*/
 void CDonne::CompterPoints(int bouts, int pts, poignee pgn, camp cmp)
 {
-	int ptf;
-	int bonus_pgn;
-	int bonus_ctr;
-	int objectif;
-	int score_preneur;
-	int score_defenseurs;
-	bool victoire;
-	//camp_petit_au_bout = annonce_petit();  mise a jour du camp du petit au bout
-	switch (type_contrat)
+	int ptf = 0;
+	int bonus_pgn = 0;
+	int bonus_ctr = 1;
+	int objectif = 0;
+	int score_preneur = 0;
+	int score_defenseurs = 0;
+	bool victoire = false;
+	switch (type_contrat)//pas ok
 	{
 	case prise:
 		bonus_ctr = 1;
@@ -84,18 +54,18 @@ void CDonne::CompterPoints(int bouts, int pts, poignee pgn, camp cmp)
 		bonus_ctr = 6;
 		break;
 	}
-	switch (bouts)
+	switch (bouts)//ok
 	{
-	case'0':
+	case 0:
 		objectif = 56;
 		break;
-	case'1':
+	case 1:
 		objectif = 51;
 		break;
-	case'2':
+	case 2:
 		objectif = 41;
 		break;
-	case'3':
+	case 3:
 		objectif = 36;
 		break;
 	}
@@ -112,19 +82,19 @@ void CDonne::CompterPoints(int bouts, int pts, poignee pgn, camp cmp)
 		break;
 	}
 	ptf = (pts - objectif);
-	if (ptf < 0)
+	if (ptf < 0)//ok
 	{
 		score_preneur = ((ptf - 25)*bonus_ctr) * 3;
 		score_defenseurs = ((-ptf) + 25)*bonus_ctr;
 		victoire = false;
 	}
-	else if (ptf >= 0)
+	else if (ptf >= 0)//ok
 	{
 		score_preneur = ((ptf + 25)*bonus_ctr) * 3;
 		score_defenseurs = ((-ptf) - 25)*bonus_ctr;
 		victoire = true;
 	}
-	if (camp_petit_au_bout != personne)
+	if (camp_petit_au_bout != personne)//pas ok
 	{
 		if (camp_petit_au_bout == preneur)
 		{
@@ -137,7 +107,7 @@ void CDonne::CompterPoints(int bouts, int pts, poignee pgn, camp cmp)
 			score_defenseurs = score_defenseurs + (10 * bonus_ctr);
 		}
 	}
-	if (camp_poignee != personne)
+	if (camp_poignee != personne)//pas ok
 	{
 		if ((camp_poignee == preneur && victoire == false) || (camp_poignee == defenseur && victoire == false))
 		{
@@ -165,15 +135,21 @@ void CDonne::SetCampPetitAuBout(camp p)
 #ifdef TESTU_COMPTERPOINTS
 void main()
 {
-	CDonne donne = CDonne();
-	donne.compter_points(0, 55, non, preneur);
-	
-	donne.compter_points(0, 58, non, preneur);
-	donne.compter_points(1, 50, non, preneur);
-	donne.compter_points(1, 52, non, preneur);
-	donne.compter_points(2, 40, non, preneur);
-	donne.compter_points(2, 42, non, preneur);
-	donne.compter_points(3, 35, non, preneur);
-	donne.compter_points(3, 37, non, preneur);
+	CJoueur le_donneur = CJoueur("testeur_donneur", 0);
+	CJoueur le_preneur = CJoueur("testeur_preneur", 0);
+	CJoueur *les_defenseurs[3];
+	for (int i = 0; i <= 2; i++)
+	{
+		les_defenseurs[i] = new CJoueur("testeur_defenseur" + i, 0);
+	}
+	CDonne donne(&le_donneur, &le_preneur, les_defenseurs);
+	donne.compter_points(0, 55, non, preneur);//perdu
+	donne.compter_points(0, 57, non, preneur);//gagné
+	donne.compter_points(1, 50, non, preneur);//perdu
+	donne.compter_points(1, 52, non, preneur);//gagné
+	donne.compter_points(2, 40, non, preneur);//perdu
+	donne.compter_points(2, 42, non, preneur);//gagné
+	donne.compter_points(3, 35, non, preneur);//perdu
+	donne.compter_points(3, 37, non, preneur);//gagné
 }
 #endif
