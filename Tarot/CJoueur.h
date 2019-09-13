@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
+#define TESTU
 
 using namespace std;
 
@@ -11,9 +12,9 @@ private:
 	string nom;
 	int score;
 public:
-	CJoueur::CJoueur(string nom, int score);
+	CJoueur(string nom, int score);
 	string lireNom();
 	int lireScore();
 	int majScore(int s);
-	string ajout_nom(string nom_joueur);
+//	string ajout_nom(string nom_joueur);
 };

@@ -10,8 +10,11 @@ private:
 	CJoueur * lesjoueurs[4];
 public:
 	void set_partie(CPartie &une_partie);
-	void set_joueurs(CJoueur &joueurs);
+	//void set_joueurs(CJoueur &joueurs);
 	void distributionEncheres();
-	void Jouer();
+	void jouer();
+	void creer();
 	void nom_joueur();
+	void menu();
+	void annonce_petit();
 };

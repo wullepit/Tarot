@@ -1,3 +1,4 @@
+#pragma once
 #include"CIHM.h"
 #include <iostream>
 using namespace std;
@@ -10,18 +11,16 @@ void CIHM::nom_joueur()
 {
 	for (int i = 0; i < 4; i++)
 	{
-		string nom;
-		cout << "Choississez votre nom : ";
-		cin >> nom;
-		lesjoueurs[i]->ajout_nom(nom);
+		string n;
+		cout << "Choississez votre nom joueur " << i + 1 << " : ";
+		cin >> n;
+		lesjoueurs[i] = new CJoueur(n, 0);
 	}
 }
-void CIHM::set_joueurs(CJoueur &joueurs)
+/*void CIHM::set_joueurs(CJoueur &joueurs)
 {
-//	for (int i = 0; i < 3; i++)
-	//{
-	//}
-}
+
+}*/
 void CIHM::distributionEncheres()
 {
 	int choix;
@@ -56,4 +55,67 @@ void CIHM::distributionEncheres()
 			break;
 		}
 	}
+}
+
+/*int CIHM::annonce_petit()
+{
+
+}*/
+
+void CIHM::menu()
+{
+	char c;
+	int x;
+	cout << "Jeu de tarot :" << endl << "Entrez le nom des joueurs dans l'ordre de donne (sens inverse des aiguilles d'une montre)" << endl;
+	creer();
+	cout << "1:Nouvelle Donne" << endl;
+	cout << "2:Lire partie" << endl;
+	cout << "3:Enregistrer la partie /! NE PAS APPUYER" << endl;
+
+	do
+	{
+		cin >> c;
+		switch (c)
+		{
+		case '1':
+			jouer();
+			x = 1;
+			break;
+		case '2':
+			//	jouer();
+			break;
+		case '3':
+			/* voir csv */
+			x = 1;
+			break;
+		case '4':
+			cout << "je vous avais prevenu :p";
+			break;
+			x = 1;
+		default:
+			x = 0;
+			break;
+		}
+	} while (x == 0);
+}
+void CIHM::creer()
+{
+	nom_joueur();
+	for (int i = 0; i < 4; i++)
+	{
+		cout << "Joueur" << i + 1 << ":" << lesjoueurs[i]->lireNom() << endl;
+	}
+	cout << "Le premier donneur est le joueur 1." << endl;
+
+
+}
+
+void CIHM::jouer()
+{
+	/*créer une nouvelle donne:
+		-annonce des contrats/poignée
+		-calcul des points de la manche
+		-petit au bout?
+		-lecture et maj des points totaux
+	*/
 }
