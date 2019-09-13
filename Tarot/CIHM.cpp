@@ -96,6 +96,11 @@ void CIHM::Menu()
 {
 	char c;
 	int x;
+	cout << "Jeu de tarot :" << endl << "Entrez le nom des joueurs dans l'ordre de donne (sens inverse des aiguilles d'une montre)" << endl;
+	creer();
+	cout << "1:Nouvelle Donne" << endl;
+	cout << "2:Lire partie" << endl;
+	cout << "3:Enregistrer la partie /! NE PAS APPUYER" << endl;
 
 	do
 	{
