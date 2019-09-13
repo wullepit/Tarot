@@ -26,7 +26,7 @@ void CIHM::NomJoueur()
 	}
 }
 
-void CIHM::DistributionEncheres()
+void CIHM::AnnonceContrat()
 {
 	int j, p;
 	char choix;
@@ -68,7 +68,8 @@ void CIHM::DistributionEncheres()
 		case '4':
 			choixJoueur = garde_contre;
 			break;
-		}
+		}		
+		if(lesJoueurs[])
 		laPartie->SetContrat(lesJoueurs[j], choixJoueur);
 	}
 	else
@@ -245,11 +246,6 @@ void CIHM::AnnonceChelem()
 
 	} while (x == true);
 	laPartie->SetChelem(type);
-}
-
-void CIHM::AnnonceContrat()
-{
-
 }
 
 void CIHM::Jouer()

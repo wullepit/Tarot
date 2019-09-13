@@ -11,7 +11,7 @@ private:
 public:
 	void SetPartie();
 	//void set_joueurs(CJoueur &joueurs);
-	void DistributionEncheres();
+	void AnnonceContrat();
 	void Jouer();
 	void Creer();
 	void NomJoueur();

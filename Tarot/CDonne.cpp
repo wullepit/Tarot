@@ -136,7 +136,6 @@ void CDonne::SetTypePoignee(camp poigne, poignee typ)
 {
 	typePoignee = typ;
 	campPoignee = poigne;
-
 }
 
 void CDonne::SetChelemD(chelem type)
