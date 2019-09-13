@@ -6,15 +6,15 @@ class CIHM
 {
 private:
 	//Composition
-	CPartie * lapartie;
-	CJoueur * lesjoueurs[4];
+	CPartie * laPartie;
+	CJoueur * lesJoueurs[4];
 public:
-	void set_partie(CPartie &une_partie);
+	void SetPartie();
 	//void set_joueurs(CJoueur &joueurs);
-	void distributionEncheres();
-	void jouer();
-	void creer();
-	void nom_joueur();
-	void menu();
-	void annonce_petit();
+	void DistributionEncheres();
+	void Jouer();
+	void Creer();
+	void NomJoueur();
+	void Menu();
+	void AnnoncePetit();
 };
