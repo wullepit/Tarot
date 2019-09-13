@@ -5,7 +5,7 @@
 #include <iostream>
 //#define TESTU_MAJSCORE
 //#define TESTU_LIRESCORE
-//#define TESTU_LIRENOM
+#define TESTU_LIRENOM
 
 using namespace std;
 

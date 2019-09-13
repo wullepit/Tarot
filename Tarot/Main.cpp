@@ -3,9 +3,9 @@
 #include "CDonne.h"
 #include "CJoueur.h"
 #include "CPartie.h"
-//#define PASDETEST
+#define TEST
 
-#ifndef PASDETEST
+#ifndef TEST
 void main()
 {
 	CIHM ihm = CIHM();
