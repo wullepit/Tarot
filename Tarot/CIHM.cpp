@@ -115,7 +115,7 @@ void CIHM::Menu()
 		{
 		case '1':
 			system("cls");
-			Creer();
+			creer();
 			x = 1;
 			break;
 
@@ -145,7 +145,7 @@ void CIHM::Creer()
 	{
 		cout << "Joueur" << i + 1 << ":" << lesJoueurs[i]->LireNom() << endl;
 	}
-	cout << "Le donneur est " <<lesJoueurs[0]->LireNom() << endl;
+	cout << "Le donneur est " <<lesjoueurs[0]->lireNom() << endl;
 
 
 }
