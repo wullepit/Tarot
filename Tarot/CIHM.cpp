@@ -69,7 +69,7 @@ void CIHM::AnnoncePetit()
 	cout << "Y a-t-il eu le petit au bout ? Si oui, par quel camp ?" << endl;
 	cout << "1: Pas de petit au bout" << endl << "2: Par le preneur" << endl << "3: Par les defenseurs" << endl;
 	cin >> c;
-	
+
 	do
 	{
 		switch (c)
@@ -81,13 +81,13 @@ void CIHM::AnnoncePetit()
 			petit = preneur;
 			break;
 		case '3':
-			petit = defenseur; 
+			petit = defenseur;
 			break;
 		default:
 			t = true;
 			break;
 		}
-	} while (t==true);
+	} while (t == true);
 	//demander a la partie de mettre a jour le petit au bout de la donne courante
 	laPartie->SetPetitAuBout(petit);
 }
@@ -98,10 +98,9 @@ void CIHM::Menu()
 	int x;
 	do
 	{
-
 		cout << "Jeu de tarot :" << endl << endl
 			<< "1:Creer une partie" << endl
-			<< "2:Lire partie" << endl 
+			<< "2:Lire partie" << endl
 			<< "q:quitter" << endl << endl << ">";
 
 		cin >> c;
@@ -139,7 +138,7 @@ void CIHM::Creer()
 	{
 		cout << "Joueur" << i + 1 << ":" << lesJoueurs[i]->LireNom() << endl;
 	}
-	cout << "Le donneur est " <<lesJoueurs[0]->LireNom() << endl;
+	cout << "Le donneur est " << lesJoueurs[0]->LireNom() << endl;
 
 
 }
