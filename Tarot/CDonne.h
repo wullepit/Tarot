@@ -23,8 +23,7 @@ private:
 	CJoueur *le_donneur;
 	CJoueur *le_preneur;
 	CJoueur *les_defenseurs[3];
-public:
-	CDonne();//Constructeur par défaut pour la composition
+public:  
 	CDonne(CJoueur *donneur, CJoueur *preneur, CJoueur *defenseurs[3]);
 	~CDonne();
 	void compter_points(int bouts, int pts, poignee pgn, camp cmp);
