@@ -3,18 +3,24 @@
 #include <iostream>
 #include <Windows.h>
 using namespace std;
-//#define TESTU_SETPARTIE
-//#define TESTU_NOMJOUEUR
-//#define TESTU_DISTRIBUTION
-//#define TESTU_MENU
-//#define TESTU_CREER
-//#define TESTU_JOUER
+#define TESTU_SETPARTIE
+#define TESTU_NOMJOUEUR
+#define TESTU_DISTRIBUTION
+#define TESTU_MENU
+#define TESTU_CREER
+#define TESTU_JOUER
+#define TESTU_ANNONCEPETIT
+#define TESTU_ANNONCEPOIGNEE
+#define TESTU_ANNONCECHELEM
+#define TESTU_ANNONCECONTRAT
 
+//à tester
 void CIHM::SetPartie()
 {
 	laPartie = new CPartie(lesJoueurs);
 }
 
+//à tester
 void CIHM::NomJoueur()
 {
 	for (int i = 0; i < 4; i++)
@@ -26,6 +32,7 @@ void CIHM::NomJoueur()
 	}
 }
 
+//à tester
 void CIHM::DistributionEncheres()
 {
 	int j, p;
@@ -86,6 +93,7 @@ void CIHM::DistributionEncheres()
 	}
 }
 
+//à tester
 void CIHM::AnnoncePetit()
 {
 	bool t = false;
@@ -117,6 +125,7 @@ void CIHM::AnnoncePetit()
 	laPartie->SetPetitAuBout(petit);
 }
 
+//à tester
 void CIHM::AnnoncePoignée()
 {
 	char cmpP;
@@ -175,6 +184,7 @@ void CIHM::AnnoncePoignée()
 	laPartie->SetPoignee(campP, typePoignee);
 }
 
+//à tester
 void CIHM::Menu()
 {
 	char c;
@@ -213,6 +223,8 @@ void CIHM::Menu()
 		}
 	} while (x == 0);
 }
+
+//à tester
 void CIHM::Creer()
 {
 	cout << "Entrez le nom des joueurs dans l'ordre de donne (sens inverse des aiguilles d'une montre) :" << endl;
@@ -226,6 +238,7 @@ void CIHM::Creer()
 
 }
 
+//à tester
 void CIHM::AnnonceChelem()
 {
 	char c;
@@ -256,11 +269,13 @@ void CIHM::AnnonceChelem()
 	laPartie->SetChelem(type);
 }
 
+//à tester
 void CIHM::AnnonceContrat()
 {
 
 }
 
+//à tester
 void CIHM::Jouer()
 {
 	/*créer une nouvelle donne:
@@ -288,4 +303,16 @@ void CIHM::Jouer()
 #endif
 
 #ifdef TESTU_JOUER
+#endif
+
+#ifdef TESTU_ANNONCEPETIT
+#endif
+
+#ifdef TESTU_ANNONCECONTRAT
+#endif
+
+#ifdef TESTU_ANNONCECHELEM
+#endif
+
+#ifdef TESTU_ANNONCEPOIGNEE
 #endif
