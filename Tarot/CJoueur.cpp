@@ -15,16 +15,19 @@ CJoueur::CJoueur(string nom, int score)
 	this->score = score;
 }
 
+//ok
 string CJoueur::LireNom()
 {
 	return(nom);
 }
 
+//ok
 int CJoueur::LireScore()
 {
 	return (score);
 }
 
+//ok
 int CJoueur::MajScore(int s)
 {
 	score = score + s;
