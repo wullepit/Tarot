@@ -24,8 +24,10 @@ private:
 	CJoueur *le_preneur;
 	CJoueur *les_defenseurs[3];
 public:
-	CDonne();//Constructeur par défaut pour la composition
-	CDonne(CJoueur *donneur, CJoueur *preneur, CJoueur *defenseurs[3]);
+	CDonne(CJoueur *donneur);
+	CDonne(CJoueur *donneur, CJoueur *preneur, CJoueur *defenseurs[3]);		//Constructeur
 	~CDonne();
-	void compter_points(int bouts, int pts, poignee pgn, camp cmp);
+	void CompterPoints(int bouts, int pts, poignee pgn, camp cmp);
+	void SetCampPetitAuBout(camp p);
+	//camp CDonne::annonce_petit()
 };

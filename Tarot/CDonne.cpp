@@ -1,9 +1,13 @@
 #include "CDonne.h"
 #include "CJoueur.h"
+#include <iostream>
+using namespace std;
 //#define TESTU_COMPTERPOINTS
 
-CDonne::CDonne()
+
+CDonne::CDonne(CJoueur * donneur)
 {
+	le_donneur = donneur;
 }
 
 CDonne::CDonne(CJoueur *donneur, CJoueur *preneur, CJoueur *defenseurs[3])
@@ -26,7 +30,36 @@ CDonne::~CDonne()
 	}
 }
 
-void CDonne::compter_points(int bouts, int pts, poignee pgn, camp cmp)
+/*camp CDonne::annonce_petit()
+{
+	bool t = false;
+	camp petit;
+	char c;
+	cout << "Y a-t-il eu le petit au bout ? Si oui, par quel camp ?" << endl;
+	cout << "1: Pas de petit au bout" << endl << "2: Par le preneur" << endl << "3: Par les defenseurs" << endl;
+	cin >> c;
+
+	do
+	{
+		switch (c)
+		{
+		case '1':
+			petit = personne;
+			break;
+		case '2':
+			petit = preneur;
+			break;
+		case '3':
+			petit = defenseur;
+			break;
+		default:
+			t = true;
+			break;
+		}
+	} while (t == true);
+	return (petit);
+}*/
+void CDonne::CompterPoints(int bouts, int pts, poignee pgn, camp cmp)
 {
 	int ptf;
 	int bonus_pgn;
@@ -35,6 +68,7 @@ void CDonne::compter_points(int bouts, int pts, poignee pgn, camp cmp)
 	int score_preneur;
 	int score_defenseurs;
 	bool victoire;
+	//camp_petit_au_bout = annonce_petit();  mise a jour du camp du petit au bout
 	switch (type_contrat)
 	{
 	case prise:
@@ -116,11 +150,16 @@ void CDonne::compter_points(int bouts, int pts, poignee pgn, camp cmp)
 			score_defenseurs = score_defenseurs - bonus_pgn;
 		}
 	}
-	le_preneur->majScore(score_preneur);
+	le_preneur->MajScore(score_preneur);
 	for (int i = 0; i <= 2; i++)
 	{
-		les_defenseurs[i]->majScore(score_defenseurs);
+		les_defenseurs[i]->MajScore(score_defenseurs);
 	}
+}
+
+void CDonne::SetCampPetitAuBout(camp p)
+{
+	camp_petit_au_bout= p;
 }
 
 #ifdef TESTU_COMPTERPOINTS

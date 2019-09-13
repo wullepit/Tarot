@@ -3,25 +3,22 @@
 #include <iostream>
 using namespace std;
 
-void CIHM::set_partie(CPartie &une_partie)
+void CIHM::SetPartie()
 {
-	lapartie = &une_partie;
+	laPartie = new CPartie(lesJoueurs);
 }
-void CIHM::nom_joueur()
+void CIHM::NomJoueur()
 {
 	for (int i = 0; i < 4; i++)
 	{
 		string n;
 		cout << "Choississez votre nom joueur " << i + 1 << " : ";
 		cin >> n;
-		lesjoueurs[i] = new CJoueur(n, 0);
+		lesJoueurs[i] = new CJoueur(n, 0);
 	}
 }
-/*void CIHM::set_joueurs(CJoueur &joueurs)
-{
 
-}*/
-void CIHM::distributionEncheres()
+void CIHM::DistributionEncheres()
 {
 	int choix;
 	int choixJoueur[4];
@@ -57,17 +54,43 @@ void CIHM::distributionEncheres()
 	}
 }
 
-/*int CIHM::annonce_petit()
+void CIHM::AnnoncePetit()
 {
+	bool t = false;
+	camp petit;
+	char c;
+	cout << "Y a-t-il eu le petit au bout ? Si oui, par quel camp ?" << endl;
+	cout << "1: Pas de petit au bout" << endl << "2: Par le preneur" << endl << "3: Par les defenseurs" << endl;
+	cin >> c;
+	
+	do
+	{
+		switch (c)
+		{
+		case '1':
+			petit = personne;
+			break;
+		case '2':
+			petit = preneur;
+			break;
+		case '3':
+			petit = defenseur; 
+			break;
+		default:
+			t = true;
+			break;
+		}
+	} while (t==true);
+	//demander a la partie de mettre a jour le petit au bout de la donne courante
+	laPartie->SetPetitAuBout(petit);
+}
 
-}*/
-
-void CIHM::menu()
+void CIHM::Menu()
 {
 	char c;
 	int x;
 	cout << "Jeu de tarot :" << endl << "Entrez le nom des joueurs dans l'ordre de donne (sens inverse des aiguilles d'une montre)" << endl;
-	creer();
+	Creer();
 	cout << "1:Nouvelle Donne" << endl;
 	cout << "2:Lire partie" << endl;
 	cout << "3:Enregistrer la partie /! NE PAS APPUYER" << endl;
@@ -78,7 +101,7 @@ void CIHM::menu()
 		switch (c)
 		{
 		case '1':
-			jouer();
+			Jouer();
 			x = 1;
 			break;
 		case '2':
@@ -98,24 +121,23 @@ void CIHM::menu()
 		}
 	} while (x == 0);
 }
-void CIHM::creer()
+void CIHM::Creer()
 {
-	nom_joueur();
+	NomJoueur();
 	for (int i = 0; i < 4; i++)
 	{
-		cout << "Joueur" << i + 1 << ":" << lesjoueurs[i]->lireNom() << endl;
+		cout << "Joueur" << i + 1 << ":" << lesJoueurs[i]->LireNom() << endl;
 	}
 	cout << "Le premier donneur est le joueur 1." << endl;
-
-
 }
 
-void CIHM::jouer()
+void CIHM::Jouer()
 {
 	/*créer une nouvelle donne:
+
 		-annonce des contrats/poignée
 		-calcul des points de la manche
-		-petit au bout?
+		-petit au bout ?
 		-lecture et maj des points totaux
 	*/
 }
