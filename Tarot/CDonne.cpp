@@ -154,11 +154,11 @@ void CDonne::SetChelemD(chelem type)
 	typeChelem = type;
 }
 
-//à tester
-void CDonne::SetContratD(CJoueur *d, contrat c)
+void CDonne::SetContratD(CJoueur *d, contrat c,CJoueur * lesDefenseurs)
 {
 	typeContrat = c;
 	lePreneur = d;
+	*les_defenseurs = lesDefenseurs;
 }
 
 #ifdef TESTU_COMPTERPOINTS

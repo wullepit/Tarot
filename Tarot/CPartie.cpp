@@ -36,7 +36,7 @@ void CPartie::CreerUneDonne(CJoueur * leDonneur)
 //ok
 void CPartie::SetPoignee(camp p, poignee t)
 {
-	lesDonnes[nDonne - 1]->SetTypePoignee(p,t);
+	lesDonnes[nDonne - 1]->SetTypePoignee(p, t);
 }
 
 //ok
@@ -45,10 +45,9 @@ void CPartie::SetChelem(chelem t)
 	lesDonnes[nDonne - 1]->SetChelemD(t);
 }
 
-//à tester
-void CPartie::SetContrat(CJoueur * lePreneur, contrat t)
+void CPartie::SetContrat(CJoueur * lePreneur, contrat t, CJoueur * lesD)
 {
-	lesDonnes[nDonne - 1]->SetContratD(lePreneur, t);
+	lesDonnes[nDonne - 1]->SetContratD(lePreneur, t, lesD);
 }
 
 #ifdef TESTU_SETPETITBOUT

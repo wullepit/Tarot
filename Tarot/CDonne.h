@@ -31,5 +31,5 @@ public:
 	void SetCampPetitAuBout(camp p);
 	void SetTypePoignee(camp poigne, poignee typ);
 	void SetChelemD(chelem type);
-	void SetContratD(CJoueur *d, contrat c);
+	void SetContratD(CJoueur *d, contrat c,CJoueur *lesDefenseurs);
 };
