@@ -13,8 +13,8 @@ private:
 	int score;
 public:
 	CJoueur(string nom, int score);
-	string lireNom();
-	int lireScore();
-	int majScore(int s);
-//	string ajout_nom(string nom_joueur);
+	string LireNom();
+	int LireScore();
+	int MajScore(int s);
+//string ajout_nom(string nom_joueur);
 };

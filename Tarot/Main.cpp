@@ -3,12 +3,12 @@
 #include "CDonne.h"
 #include "CJoueur.h"
 #include "CPartie.h"
-//#define PASDETEST
+#define PASDETEST
 
 #ifndef PASDETEST
 void main()
 {
 	CIHM ihm = CIHM();
-	ihm.menu();
+	ihm.Menu();
 }
 #endif
