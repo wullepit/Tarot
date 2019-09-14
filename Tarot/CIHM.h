@@ -19,5 +19,4 @@ public:
 	void AnnoncePetit();
 	void AnnoncePoignée();
 	void AnnonceChelem();
-	void AnnonceContrat();
 };

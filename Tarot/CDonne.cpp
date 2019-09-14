@@ -1,5 +1,6 @@
 #include "CDonne.h"
 #include "CJoueur.h"
+#include "CPartie.h"
 #include <iostream>
 using namespace std;
 //#define TESTU_COMPTERPOINTS
@@ -8,7 +9,7 @@ using namespace std;
 //#define TESTU_SETCHELEM
 //#define TESTU_SETCONTRAT
 
-CDonne::CDonne(CJoueur * donneur)
+CDonne::CDonne(CJoueur* donneur)
 {
 	le_donneur = donneur;
 }
@@ -91,14 +92,14 @@ void CDonne::CompterPoints(int bouts, int pts, poignee pgn, camp cmp)
 	ptf = (pts - objectif);
 	if (ptf < 0)//ok
 	{
-		score_preneur = ((ptf - 25)*bonus_ctr) * 3;
-		score_defenseurs = ((-ptf) + 25)*bonus_ctr;
+		score_preneur = ((ptf - 25) * bonus_ctr) * 3;
+		score_defenseurs = ((-ptf) + 25) * bonus_ctr;
 		victoire = false;
 	}
 	else if (ptf >= 0)//ok
 	{
-		score_preneur = ((ptf + 25)*bonus_ctr) * 3;
-		score_defenseurs = ((-ptf) - 25)*bonus_ctr;
+		score_preneur = ((ptf + 25) * bonus_ctr) * 3;
+		score_defenseurs = ((-ptf) - 25) * bonus_ctr;
 		victoire = true;
 	}
 	if (campPetitAuBout != personne)//pas ok
@@ -153,7 +154,8 @@ void CDonne::SetChelemD(chelem type)
 	typeChelem = type;
 }
 
-void CDonne::SetContratD(CJoueur *d, contrat c,CJoueur * lesDefenseurs[])
+//ok
+void CDonne::SetContratD(CJoueur* d, contrat c, CJoueur* lesDefenseurs[])
 {
 	typeContrat = c;
 	lePreneur = d;
@@ -188,7 +190,7 @@ void main()
 	donne.SetCampPetitAuBout(personne);
 	donne.SetCampPetitAuBout(preneur);
 	donne.SetCampPetitAuBout(defenseur);
-}	
+}
 #endif
 
 #ifdef TESTU_SETPOIGNEE
@@ -226,8 +228,22 @@ void main()
 #ifdef TESTU_SETCONTRAT
 void main()
 {
-	CJoueur le_donneur = CJoueur("testeur_donneur", 0);
-	CDonne donne(&le_donneur);
-	donne.SetContratD()
+	CJoueur* les_joueurs[4];
+	for (int i = 0; i <= 3; i++)
+	{
+		les_joueurs[i] = new CJoueur("joueur" + i, 0);
+	}
+	CPartie partie(les_joueurs);
+	CJoueur* les_defenseurs[3];
+	for (int i = 0; i <= 2; i++)
+	{
+		les_defenseurs[i] = les_joueurs[i + 1];
+	}
+	CDonne donne(les_joueurs[0]);
+	donne.SetContratD(les_joueurs[0], prise, les_defenseurs);
+	donne.SetContratD(les_joueurs[0], garde, les_defenseurs);
+	donne.SetContratD(les_joueurs[0], garde_sans, les_defenseurs);
+	donne.SetContratD(les_joueurs[0], garde_contre, les_defenseurs);
+	donne.SetContratD(les_joueurs[0], passe, les_defenseurs);
 }
 #endif

@@ -45,6 +45,7 @@ void CPartie::SetChelem(chelem t)
 	lesDonnes[nDonne - 1]->SetChelemD(t);
 }
 
+//ok
 void CPartie::SetContrat(CJoueur * lePreneur, contrat t, CJoueur * lesD[])
 {
 	lesDonnes[nDonne - 1]->SetContratD(lePreneur, t, lesD);
@@ -135,7 +136,16 @@ void main()
 		les_joueurs[i] = new CJoueur("joueur" + i, 0);
 	}
 	CPartie partie(les_joueurs);
+	CJoueur* les_defenseurs[3];
+	for (int i = 0; i <= 2; i++)
+	{
+		les_defenseurs[i] = les_joueurs[i + 1];
+	}
 	partie.CreerUneDonne(les_joueurs[1]);
-	partie.SetContrat();
+	partie.SetContrat(les_joueurs[1], passe, les_defenseurs);
+	partie.SetContrat(les_joueurs[1], prise, les_defenseurs);
+	partie.SetContrat(les_joueurs[1], garde, les_defenseurs);
+	partie.SetContrat(les_joueurs[1], garde_sans, les_defenseurs);
+	partie.SetContrat(les_joueurs[1], garde_contre, les_defenseurs);
 }
 #endif

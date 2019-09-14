@@ -3,24 +3,23 @@
 #include <iostream>
 #include <Windows.h>
 using namespace std;
-#define TESTU_SETPARTIE
-#define TESTU_NOMJOUEUR
-#define TESTU_DISTRIBUTION
-#define TESTU_MENU
-#define TESTU_CREER
-#define TESTU_JOUER
-#define TESTU_ANNONCEPETIT
-#define TESTU_ANNONCEPOIGNEE
-#define TESTU_ANNONCECHELEM
-#define TESTU_ANNONCECONTRAT
+//#define TESTU_SETPARTIE
+//#define TESTU_NOMJOUEUR
+//#define TESTU_MENU
+//#define TESTU_CREER
+//#define TESTU_JOUER
+//#define TESTU_ANNONCEPETIT
+//#define TESTU_ANNONCEPOIGNEE
+//#define TESTU_ANNONCECHELEM
+//#define TESTU_ANNONCECONTRAT
 
-//à tester
+//ok
 void CIHM::SetPartie()
 {
 	laPartie = new CPartie(lesJoueurs);
 }
 
-//à tester
+//ok
 void CIHM::NomJoueur()
 {
 	for (int i = 0; i < 4; i++)
@@ -32,6 +31,7 @@ void CIHM::NomJoueur()
 	}
 }
 
+//marche pas (exception levée)
 void CIHM::AnnonceContrat()
 {
 	int j, p;
@@ -92,7 +92,7 @@ void CIHM::AnnonceContrat()
 	}
 }
 
-//à tester
+//marche pas (violation en lecture)
 void CIHM::AnnoncePetit()
 {
 	bool t = false;
@@ -124,7 +124,7 @@ void CIHM::AnnoncePetit()
 	laPartie->SetPetitAuBout(petit);
 }
 
-//à tester
+//marche pas (variable pas initialisée)
 void CIHM::AnnoncePoignée()
 {
 	char cmpP;
@@ -183,7 +183,7 @@ void CIHM::AnnoncePoignée()
 	laPartie->SetPoignee(campP, typePoignee);
 }
 
-//à tester
+//à finir
 void CIHM::Menu()
 {
 	char c;
@@ -223,7 +223,7 @@ void CIHM::Menu()
 	} while (x == 0);
 }
 
-//à tester
+//ok
 void CIHM::Creer()
 {
 	cout << "Entrez le nom des joueurs dans l'ordre de donne (sens inverse des aiguilles d'une montre) :" << endl;
@@ -233,11 +233,10 @@ void CIHM::Creer()
 		cout << "Joueur" << i + 1 << ":" << lesJoueurs[i]->LireNom() << endl;
 	}
 	cout << "Le donneur est " << lesJoueurs[0]->LireNom() << endl;
-	DistributionEncheres();
-
+	//DistributionEncheres();
 }
 
-//à tester
+//marche pas (variable pas initialisée)
 void CIHM::AnnonceChelem()
 {
 	char c;
@@ -268,6 +267,7 @@ void CIHM::AnnonceChelem()
 	laPartie->SetChelem(type);
 }
 
+//à faire
 void CIHM::Jouer()
 {
 	/*créer une nouvelle donne:
@@ -280,31 +280,75 @@ void CIHM::Jouer()
 }
 
 #ifdef TESTU_SETPARTIE
+void main()
+{
+	CIHM ihm;
+	ihm.SetPartie();
+}
 #endif
 
 #ifdef TESTU_NOMJOUEUR
+void main()
+{
+	CIHM ihm;
+	ihm.NomJoueur();
+}
 #endif
 
 #ifdef TESTU_DISTRIBUTION
 #endif
 
 #ifdef TESTU_MENU
+void main()
+{
+	CIHM ihm;
+	ihm.Menu();
+}
 #endif
 
 #ifdef TESTU_CREER
+void main()
+{
+	CIHM ihm;
+	ihm.Creer();
+}
 #endif
 
 #ifdef TESTU_JOUER
 #endif
 
 #ifdef TESTU_ANNONCEPETIT
+void main()
+{
+	CIHM ihm;
+	ihm.SetPartie();
+	ihm.AnnoncePetit();
+}
 #endif
 
 #ifdef TESTU_ANNONCECONTRAT
+void main()
+{
+	CIHM ihm;
+	ihm.SetPartie();
+	ihm.AnnonceContrat();
+}
 #endif
 
 #ifdef TESTU_ANNONCECHELEM
+void main()
+{
+	CIHM ihm;
+	ihm.SetPartie();
+	ihm.AnnonceChelem();
+}
 #endif
 
 #ifdef TESTU_ANNONCEPOIGNEE
+void main()
+{
+	CIHM ihm;
+	ihm.SetPartie();
+	ihm.AnnoncePoignée();
+}
 #endif
