@@ -1,5 +1,7 @@
 #pragma once
 #include"CIHM.h"
+#include "CPartie.h"
+#include "CDonne.h"
 #include <iostream>
 #include <Windows.h>
 using namespace std;
@@ -11,7 +13,7 @@ using namespace std;
 //#define TESTU_ANNONCEPETIT
 //#define TESTU_ANNONCEPOIGNEE
 //#define TESTU_ANNONCECHELEM
-//#define TESTU_ANNONCECONTRAT
+#define TESTU_ANNONCECONTRAT
 
 //ok
 void CIHM::SetPartie()
@@ -36,7 +38,7 @@ void CIHM::AnnonceContrat()
 {
 	int j, p;
 	int n = 0;
-	char choix;
+	char c;
 	string a;
 	bool jouer = true;
 	CJoueur *lesDef[3];
@@ -47,50 +49,67 @@ void CIHM::AnnonceContrat()
 	cin >> p;
 	if (p == 1)
 	{
-		cout << "Qui est le preneur ? " << endl;
-		for (int i = 0; i < 4; i++)
+		do
 		{
-			cout << i + 1 << ":" << lesJoueurs[i]->LireNom() << endl;
-		}
-		cin >> j;
+			cout << "Qui est le preneur ? " << endl;
+			for (int i = 0; i < 4; i++)
+			{
+				cout << i + 1 << ":" << lesJoueurs[i]->LireNom() << endl;
+			}
+			cin >> j;
+			j++;
+		} while (j <0  || j > 5);
 		cout << "Annonce du preneur:" << endl
 			<< "1 : Prise" << endl
 			<< "2 : Garde" << endl
 			<< "3 : Garde-Sans" << endl
 			<< "4 : Garde-Contre" << endl;
-		cin >> choix;
-		switch (choix)
+
+		do
 		{
-			/*	case '0':
-					choixJoueur[j] = passe;
-					break;
-			*/
-		case '1':
-			choixJoueur = prise;
-			break;
-		case '2':
-			choixJoueur = garde;
-			break;
-		case '3':
-			choixJoueur = garde_sans;
-			break;
-		case '4':
-			choixJoueur = garde_contre;
-			break;
-		}
+			cin >> c;
+			switch (c)
+			{
+				/*	case '0':
+						choixJoueur[j] = passe;
+						break;
+				*/
+			case '1':
+				choixJoueur = prise;
+				c = 'v';
+				break;
+			case '2':
+				choixJoueur = garde;
+				c = 'v';
+				break;
+			case '3':
+				choixJoueur = garde_sans;
+				c = 'v';
+				break;
+			case '4':
+				choixJoueur = garde_contre;
+				c = 'v';
+				break;
+			}
+		} while (c != 'v');
+
+		cout << "ca marche";
 		for (int l = 0; l < 4; l++)
 		{
 			if (lesJoueurs[l] != lesJoueurs[j])
+			{
 				lesDef[n] = lesJoueurs[l];
-			n++;
+				n++;
+			}
 		}
-		laPartie->SetContrat(lesJoueurs[j], choixJoueur,lesDef);
+		laPartie->SetContrat(lesJoueurs[j], choixJoueur, lesDef);
 	}
 	else
 	{
 		// Distribuez une nouvelle donne
 	}
 }
+
 
 //marche pas (violation en lecture)
 void CIHM::AnnoncePetit()
@@ -331,6 +350,7 @@ void main()
 {
 	CIHM ihm;
 	ihm.SetPartie();
+	ihm.Creer();
 	ihm.AnnonceContrat();
 }
 #endif
