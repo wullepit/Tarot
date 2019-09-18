@@ -10,10 +10,10 @@ using namespace std;
 //#define TESTU_MENU
 //#define TESTU_CREER
 //#define TESTU_JOUER
-//#define TESTU_ANNONCEPETIT
+#define TESTU_ANNONCEPETIT
 //#define TESTU_ANNONCEPOIGNEE
 //#define TESTU_ANNONCECHELEM
-#define TESTU_ANNONCECONTRAT
+//#define TESTU_ANNONCECONTRAT
 
 //ok
 void CIHM::SetPartie()
@@ -33,7 +33,7 @@ void CIHM::NomJoueur()
 	}
 }
 
-//marche pas (exception levée)
+//ok
 void CIHM::AnnonceContrat()
 {
 	int j, p;
@@ -103,6 +103,7 @@ void CIHM::AnnonceContrat()
 			}
 		}
 		laPartie->SetContrat(lesJoueurs[j], choixJoueur, lesDef);
+		
 	}
 	else
 	{
@@ -111,7 +112,7 @@ void CIHM::AnnonceContrat()
 }
 
 
-//marche pas (violation en lecture)
+//ok
 void CIHM::AnnoncePetit()
 {
 	bool t = false;
@@ -143,7 +144,7 @@ void CIHM::AnnoncePetit()
 	laPartie->SetPetitAuBout(petit);
 }
 
-//marche pas (variable pas initialisée)
+//ok
 void CIHM::AnnoncePoignée()
 {
 	char cmpP;
@@ -154,6 +155,8 @@ void CIHM::AnnoncePoignée()
 	bool p;
 	do
 	{
+		cout << "qui a la poignée?"<<endl;
+		cin >> cmpP;
 		switch (cmpP)//Dans quel camp est la poignée
 		{
 		case '1':
@@ -176,7 +179,10 @@ void CIHM::AnnoncePoignée()
 	if (p == true)
 	{
 		//Type de poignee ?
+		t = false;
 		do {
+			cout << "Type de poignee ?" << endl;
+			cin >> typeP;
 			switch (typeP)
 			{
 			case '1':
@@ -189,10 +195,10 @@ void CIHM::AnnoncePoignée()
 				typePoignee = triplee;
 				break;
 			default:
-				t = false;
+				t = true;
 				break;
 			}
-		} while (t == false);
+		} while (t == true);
 	}
 	else
 	{
@@ -252,6 +258,7 @@ void CIHM::Creer()
 		cout << "Joueur" << i + 1 << ":" << lesJoueurs[i]->LireNom() << endl;
 	}
 	cout << "Le donneur est " << lesJoueurs[0]->LireNom() << endl;
+	laPartie->CreerUneDonne(lesJoueurs[0]);
 	//DistributionEncheres();
 }
 
@@ -329,6 +336,7 @@ void main()
 void main()
 {
 	CIHM ihm;
+	ihm.SetPartie();
 	ihm.Creer();
 }
 #endif
@@ -341,11 +349,13 @@ void main()
 {
 	CIHM ihm;
 	ihm.SetPartie();
+	ihm.Creer();
 	ihm.AnnoncePetit();
 }
 #endif
 
 #ifdef TESTU_ANNONCECONTRAT
+#include "CPartie.h"
 void main()
 {
 	CIHM ihm;
@@ -360,6 +370,7 @@ void main()
 {
 	CIHM ihm;
 	ihm.SetPartie();
+	ihm.Creer();
 	ihm.AnnonceChelem();
 }
 #endif
@@ -369,6 +380,7 @@ void main()
 {
 	CIHM ihm;
 	ihm.SetPartie();
+	ihm.Creer();
 	ihm.AnnoncePoignée();
 }
 #endif
